@@ -11,11 +11,12 @@ tracks:
     - git-bloom-generate -y rosrpm --prefix release/:{ros_distro} :{ros_distro} -i
       :{release_inc}
     devel_branch: null
+    last_version: 1.1.0
     name: upstream
     patches: indigo
-    release_inc: -1
+    release_inc: '0'
     release_repo_url: null
-    release_tag: null 
+    release_tag: null
     ros_distro: indigo
     vcs_type: svn
     vcs_uri: http://svn.openrtm.org/OpenRTM-aist-Python/tags/RELEASE_1_1_0_RC1/OpenRTM-aist-Python/
