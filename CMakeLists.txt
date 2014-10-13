@@ -12,7 +12,7 @@ add_custom_target(compile_openrtm_aist_python ALL
   WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
 
 add_custom_target(install_openrtm_aist_python
-  COMMAND python setup.py install --prefix=${CMAKE_INSTALL_PREFIX} ${SETUPTOOLS_ARG_EXTRA} --skip-build
+  COMMAND python setup.py install --prefix=$(DESTDIR)${CMAKE_INSTALL_PREFIX} ${SETUPTOOLS_ARG_EXTRA} --skip-build
   WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
 
 install(CODE "execute_process(COMMAND \"${CMAKE_COMMAND}\" --build \"${CMAKE_BINARY_DIR}\" --target install_openrtm_aist_python)")
