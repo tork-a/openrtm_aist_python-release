@@ -1,3 +1,24 @@
+## openrtm_aist_python (hydro) - 1.1.0-0
+
+The packages in the `openrtm_aist_python` repository were released into the `hydro` distro by running `/usr/bin/bloom-release openrtm_aist_python --track hydro -r hydro --new-track` on `Tue, 10 Feb 2015 13:35:37 -0000`
+
+The `openrtm_aist_python` package was released.
+
+Version of package(s) in repository `openrtm_aist_python`:
+- upstream repository: http://svn.openrtm.org/OpenRTM-aist-Python/tags/RELEASE_1_1_0_RC1/OpenRTM-aist-Python/
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `1.1.0-0`
+
+Versions of tools used:
+- bloom version: `0.5.18`
+- catkin_pkg version: `0.2.2`
+- rosdep version: `0.10.33`
+- rosdistro version: `0.4.0`
+- vcstools version: `0.1.33`
+
+
 ## openrtm_aist_python (indigo) - 1.1.0-6
 
 The packages in the `openrtm_aist_python` repository were released into the `indigo` distro by running `/usr/bin/bloom-release openrtm_aist_python --track indigo --rosdistro indigo` on `Thu, 08 Jan 2015 09:09:51 -0000`
