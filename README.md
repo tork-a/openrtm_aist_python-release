@@ -1,3 +1,24 @@
+## openrtm_aist_python (jade) - 1.1.0-0
+
+The packages in the `openrtm_aist_python` repository were released into the `jade` distro by running `/usr/bin/bloom-release openrtm_aist_python -r jade -t jade` on `Wed, 22 Apr 2015 08:07:57 -0000`
+
+The `openrtm_aist_python` package was released.
+
+Version of package(s) in repository `openrtm_aist_python`:
+- upstream repository: http://svn.openrtm.org/OpenRTM-aist-Python/tags/RELEASE_1_1_0_RC1/OpenRTM-aist-Python/
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `1.1.0-0`
+
+Versions of tools used:
+- bloom version: `0.5.19`
+- catkin_pkg version: `0.2.6`
+- rosdep version: `0.11.2`
+- rosdistro version: `0.4.0`
+- vcstools version: `0.1.36`
+
+
 ## openrtm_aist_python (hydro) - 1.1.0-11
 
 The packages in the `openrtm_aist_python` repository were released into the `hydro` distro by running `/usr/bin/bloom-release openrtm_aist_python --track hydro -r hydro` on `Sat, 21 Feb 2015 07:49:39 -0000`
