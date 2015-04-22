@@ -1,0 +1,26 @@
+From d4fb855ceb915db8bfbeae0fad18cfebe06e964c Mon Sep 17 00:00:00 2001
+From: Kei Okada <kei.okada@gmail.com>
+Date: Wed, 22 Apr 2015 16:37:40 +0900
+Subject: [PATCH] do not install setup.sh
+
+---
+ setup.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 270b98d..f153ef2 100644
+--- a/setup.py
++++ b/setup.py
+@@ -552,8 +552,7 @@ try:
+                                       "sdist":OtherSetupForSdist, "install":Install, "install_data":InstallData },
+                  packages         = unix_packages,
+                  scripts= ['OpenRTM_aist/utils/rtcprof/rtcprof_python',
+-                           'OpenRTM_aist/utils/rtcd/rtcd_python',
+-                           'OpenRTM_aist/ext/sdo/observer/setup.sh'],
++                           'OpenRTM_aist/utils/rtcd/rtcd_python'],
+                  data_files       = unix_data_files)
+       
+     # for RTM zip (sdist)
+-- 
+1.9.1
+
