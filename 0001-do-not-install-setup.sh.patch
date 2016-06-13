@@ -1,4 +1,4 @@
-From b204bd536cefe6a0afaab5795c9ccd26c2b92447 Mon Sep 17 00:00:00 2001
+From 95f50f601c7ee54eb998ee2d89dac02c53a871d6 Mon Sep 17 00:00:00 2001
 From: Kei Okada <kei.okada@gmail.com>
 Date: Wed, 22 Apr 2015 17:09:33 +0900
 Subject: [PATCH] do not install setup.sh
