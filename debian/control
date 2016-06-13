@@ -1,0 +1,13 @@
+Source: ros-kinetic-openrtm-aist-python
+Section: misc
+Priority: extra
+Maintainer: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), cmake, doxygen, omniidl-python, python-omniorb, python-omniorb-omg, python-setuptools
+Homepage: http://ros.org/wiki/openrtm_aist
+Standards-Version: 3.9.2
+
+Package: ros-kinetic-openrtm-aist-python
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, omniidl-python, python-omniorb, python-omniorb-omg
+Description: Python binding of OpenRTM-AIST (see openrtm_aist for further information).
+ OpenRTM-aist is an RT-Middleware-baseed, component-oriented software platform to robotics development that is made and maintained in AIST (National Institute of Advanced Industrial Science and Technology) in Japan (excerpts from here)
