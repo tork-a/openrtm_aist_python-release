@@ -132,8 +132,8 @@ tracks:
     patches: indigo
     release_inc: '0'
     release_repo_url: null
-    release_tag: null
+    release_tag: be96313 # svn/RELEASE_1_1_0_RC1
     ros_distro: melodic
-    vcs_type: svn
-    vcs_uri: http://svn.openrtm.org/OpenRTM-aist-Python/tags/RELEASE_1_1_0_RC1/OpenRTM-aist-Python/
+    vcs_type: git
+    vcs_uri: https://github.com/OpenRTM/OpenRTM-aist-Python.git
     version: 1.1.0
