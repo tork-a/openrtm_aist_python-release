@@ -1,3 +1,26 @@
+## openrtm_aist_python (melodic) - 1.1.0-2
+
+The packages in the `openrtm_aist_python` repository were released into the `melodic` distro by running `/usr/bin/bloom-release -y openrtm_aist_python --rosdistro melodic --track melodic` on `Wed, 14 Oct 2020 14:13:39 -0000`
+
+The `openrtm_aist_python` package was released.
+
+Version of package(s) in repository `openrtm_aist_python`:
+
+- upstream repository: https://github.com/OpenRTM/OpenRTM-aist-Python.git
+- release repository: https://github.com/tork-a/openrtm_aist_python-release.git
+- rosdistro version: `1.1.0-0`
+- old version: `1.1.0-1`
+- new version: `1.1.0-2`
+
+Versions of tools used:
+
+- bloom version: `0.9.8`
+- catkin_pkg version: `0.4.22`
+- rosdep version: `0.19.0`
+- rosdistro version: `0.8.2`
+- vcstools version: `0.1.42`
+
+
 ## openrtm_aist_python (melodic) - 1.1.0-0
 
 The packages in the `openrtm_aist_python` repository were released into the `melodic` distro by running `/usr/bin/bloom-release -y openrtm_aist_python --track melodic --rosdistro melodic` on `Sun, 11 Nov 2018 09:27:45 -0000`
