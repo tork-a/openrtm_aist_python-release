@@ -552,8 +552,7 @@ try:
                                       "sdist":OtherSetupForSdist, "install":Install, "install_data":InstallData },
                  packages         = unix_packages,
                  scripts= ['OpenRTM_aist/utils/rtcprof/rtcprof_python',
-                           'OpenRTM_aist/utils/rtcd/rtcd_python',
-                           'OpenRTM_aist/ext/sdo/observer/setup.sh'],
+                           'OpenRTM_aist/utils/rtcd/rtcd_python'],
                  data_files       = unix_data_files)
       
     # for RTM zip (sdist)
