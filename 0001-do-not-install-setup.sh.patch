@@ -1,4 +1,4 @@
-From 8dd00938faabcdc716a90314324298aef872d62c Mon Sep 17 00:00:00 2001
+From 7eda24e5993c41c11733b67f3d74b6a3b9e10d4d Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Wed, 14 Oct 2020 22:49:14 +0900
 Subject: [PATCH] do not install setup.sh
