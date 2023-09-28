@@ -139,7 +139,7 @@ class AutoTestIn(OpenRTM_aist.DataFlowComponentBase):
     if self._InIn.isNew() and self._SeqInIn.isNew() and self._msg:
       floatdata = self._InIn.read()
       fdata = "%.6f\n" % floatdata.data
-      print("fdata:", fdata)
+      print "fdata:", fdata
       self._file.write(fdata)
       
       seqfloatdata = self._SeqInIn.read()
@@ -147,7 +147,7 @@ class AutoTestIn(OpenRTM_aist.DataFlowComponentBase):
       t_sdata = tuple(d for d in seqfloatdata.data)
       sdata = "%.6f %.6f %.6f %.6f %.6f\n" % t_sdata
 
-      print("sdata: ", sdata)
+      print "sdata: ", sdata
       self._file.write(sdata)
       
       self._file.write(self._msg)

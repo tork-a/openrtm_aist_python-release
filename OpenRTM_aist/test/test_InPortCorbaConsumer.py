@@ -41,7 +41,7 @@ class InPortTest(RTC__POA.InPortAny):
 		
 		
 	def put(self, data):
-		print("put data: ", data)
+		print "put data: ", data
 
 		
 class test(OpenRTM_aist.RTObject_impl):

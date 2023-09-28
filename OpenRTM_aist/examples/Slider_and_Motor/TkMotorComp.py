@@ -8,7 +8,7 @@ sys.path.append(".")
 import RTC
 import OpenRTM_aist
 
-from . import tkmotor
+import tkmotor
 import time
 
 
@@ -56,13 +56,13 @@ class TkMotorComp(OpenRTM_aist.DataFlowComponentBase):
     try:
       indata = self._tkIn.read()
       val = indata.data
-      print(val)
+      print val
       if len(val) == 6:
         for i in range(6):
           self._v[i] += val[i] / 2
         tkm.set_angle(self._v)
     except:
-      print("Exception cought in onExecute()")
+      print "Exception cought in onExecute()"
 
     time.sleep(0.01)
     return RTC.RTC_OK
@@ -87,7 +87,7 @@ def MyModuleInit(manager):
   # Create a component
   comp = manager.createComponent("TkMotorComp")
 
-  print("Componet created")
+  print "Componet created"
 
 
 def main():

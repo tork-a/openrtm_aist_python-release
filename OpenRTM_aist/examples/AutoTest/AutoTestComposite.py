@@ -6,8 +6,8 @@ import sys
 import time
 import socket
 
-from .rtc_handle10_11 import *
-from .CorbaNaming import *
+from rtc_handle10_11 import *
+from CorbaNaming import *
 import RTM
 
 
@@ -20,7 +20,7 @@ naming = CorbaNaming(env.orb, "localhost:2809")
 manager = naming.resolve(mgr_name)._narrow(RTM.Manager)
 
 listo = env.name_space["localhost:2809"].list_obj()
-list(env.name_space['localhost:2809'].rtc_handles.keys())
+env.name_space['localhost:2809'].rtc_handles.keys()
 
 ns = env.name_space['localhost:2809']
 

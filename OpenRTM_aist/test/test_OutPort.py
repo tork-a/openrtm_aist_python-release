@@ -34,14 +34,14 @@ class OnRWTest:
     pass
 
   def echo(self, value=None):
-    print("OnRW Called")
+    print "OnRW Called"
 
 class OnRWConvertTest:
   def __init__(self):
     pass
 
   def echo(self, value=None):
-    print("OnRWConvert Called")
+    print "OnRWConvert Called"
     return value
 
 class ConnectorMock:

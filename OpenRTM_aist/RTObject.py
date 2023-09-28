@@ -860,13 +860,13 @@ class RTObject_impl(OpenRTM__POA.DataFlowComponent):
 
     num = OpenRTM_aist.CORBA_SeqUtil.find(self._ecMine, self.ec_find(cxt))
     if num != -1:
-      return int(num)
+      return long(num)
 
     num = OpenRTM_aist.CORBA_SeqUtil.find(self._ecOther, self.ec_find(cxt))
     if num != -1:
-      return int(num)
+      return long(num)
 
-    return int(-1)
+    return long(-1)
 
 
   #============================================================
@@ -1012,7 +1012,7 @@ class RTObject_impl(OpenRTM__POA.DataFlowComponent):
 
     # no space in the list, push back ec to the last.
     OpenRTM_aist.CORBA_SeqUtil.push_back(self._ecOther,ecs)
-    ec_id = int(len(self._ecOther) - 1 + ECOTHER_OFFSET)
+    ec_id = long(len(self._ecOther) - 1 + ECOTHER_OFFSET)
     self.onAttachExecutionContext(ec_id)
     return ec_id
 
@@ -1041,7 +1041,7 @@ class RTObject_impl(OpenRTM__POA.DataFlowComponent):
     # no space in the list, push back ec to the last.
     OpenRTM_aist.CORBA_SeqUtil.push_back(self._ecMine,ecs)
     
-    return int(len(self._ecMine) - 1)
+    return long(len(self._ecMine) - 1)
     #return long(len(self._ecMine) - 1 + ECOTHER_OFFSET)
 
 
@@ -1096,11 +1096,11 @@ class RTObject_impl(OpenRTM__POA.DataFlowComponent):
     # ID: offset -       : participating ec
     # owned       ec index = ID
     # participate ec index = ID - offset
-    if (int(ec_id) < int(ECOTHER_OFFSET)) or \
-          (int(ec_id - ECOTHER_OFFSET) > len_):
+    if (long(ec_id) < long(ECOTHER_OFFSET)) or \
+          (long(ec_id - ECOTHER_OFFSET) > len_):
       return RTC.BAD_PARAMETER
     
-    index = int(ec_id - ECOTHER_OFFSET)
+    index = long(ec_id - ECOTHER_OFFSET)
 
     if index < 0 or CORBA.is_nil(self._ecOther[index]):
       return RTC.BAD_PARAMETER
@@ -4657,7 +4657,7 @@ class RTObject_impl(OpenRTM__POA.DataFlowComponent):
           ec = ecs._narrow(RTC.ExecutionContext)
           return self._ec._is_equivalent(ec)
       except:
-        print(OpenRTM_aist.Logger.print_exception())
+        print OpenRTM_aist.Logger.print_exception()
         return False
 
       return False
@@ -4696,7 +4696,7 @@ class RTObject_impl(OpenRTM__POA.DataFlowComponent):
           ec.deactivate_component(self._comp)
           ec.stop()
       except:
-        print(OpenRTM_aist.Logger.print_exception())
+        print OpenRTM_aist.Logger.print_exception()
 
 
 # RtcBase = RTObject_impl

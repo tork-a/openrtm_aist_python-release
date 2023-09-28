@@ -169,8 +169,8 @@ class Manager:
       # for 0.4.x
       argv = arg[1]
     else:
-      print("Invalid arguments for init()")
-      print("init(argc,argv) or init(argv)")
+      print "Invalid arguments for init()"
+      print "init(argc,argv) or init(argv)"
         
     if manager is None:
       guard = OpenRTM_aist.ScopedLock(mutex)
@@ -769,7 +769,7 @@ class Manager:
     comp_prop = OpenRTM_aist.Properties()
     comp_id   = OpenRTM_aist.Properties()
 
-    print("comp_args:", comp_args)
+    print "comp_args:", comp_args
     if not self.procComponentArgs(comp_args, comp_id, comp_prop):
       return None
 
@@ -1534,7 +1534,7 @@ class Manager:
         self._poa.destroy(False, True)
         self._poa = PortableServer.POA._nil
         self._rtcout.RTC_DEBUG("POA was destroyed.")
-      except CORBA.SystemException as ex:
+      except CORBA.SystemException, ex:
         self._rtcout.RTC_ERROR("Caught SystemException during root POA destruction")
         self._rtcout.RTC_ERROR(OpenRTM_aist.Logger.print_exception())
       except:
@@ -1546,7 +1546,7 @@ class Manager:
         self._orb.shutdown(True)
         self._rtcout.RTC_DEBUG("ORB was shutdown.")
         self._orb = CORBA.Object._nil
-      except CORBA.SystemException as ex:
+      except CORBA.SystemException, ex:
         self._rtcout.RTC_ERROR("Caught CORBA::SystemException during ORB shutdown.")
         self._rtcout.RTC_ERROR(OpenRTM_aist.Logger.print_exception())
       except:
@@ -1972,7 +1972,7 @@ class Manager:
       try:
         conff = open(self._config.getProperty(name_conf))
       except:
-        print("Not found. : %s" % self._config.getProperty(name_conf))
+        print "Not found. : %s" % self._config.getProperty(name_conf)
         self._rtcout.RTC_ERROR(OpenRTM_aist.Logger.print_exception())
       else:
         name_prop.load(conff)
@@ -1984,7 +1984,7 @@ class Manager:
       try:
         conff = open(self._config.getProperty(type_conf))
       except:
-        print("Not found. : %s" % self._config.getProperty(type_conf))
+        print "Not found. : %s" % self._config.getProperty(type_conf)
         self._rtcout.RTC_ERROR(OpenRTM_aist.Logger.print_exception())
       else:
         type_prop.load(conff)
@@ -2035,7 +2035,7 @@ class Manager:
       try:
         conff = open(file_name)
       except:
-        print("Not found. : %s" % file_name)
+        print "Not found. : %s" % file_name
         self._rtcout.RTC_ERROR(OpenRTM_aist.Logger.print_exception())
       else:
         prop.load(conff)
@@ -2081,22 +2081,22 @@ class Manager:
 
     try:
       while 1:
-        n = next(it)
+        n = it.next()
         if n == '%':
           count+=1
           if not (count % 2):
             str_ += n
         elif n == '$':
           count = 0
-          n = next(it)
+          n = it.next()
           if n == '{' or n == '(':
-            n = next(it)
+            n = it.next()
             env = ""
-            for i in range(len_):
+            for i in xrange(len_):
               if n == '}' or n == ')':
                 break
               env += n
-              n = next(it)
+              n = it.next()
             envval = os.getenv(env)
             if envval:
               str_ += envval
@@ -2420,7 +2420,7 @@ class Manager:
         self._orb.run()
         #Manager.instance().shutdown()
       except:
-        print(OpenRTM_aist.Logger.print_exception())
+        print OpenRTM_aist.Logger.print_exception()
         pass
       return
 
