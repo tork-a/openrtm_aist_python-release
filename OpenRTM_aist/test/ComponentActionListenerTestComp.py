@@ -26,30 +26,30 @@ class DataListener(OpenRTM_aist.ConnectorDataListenerT):
     self._name = name
     
   def __del__(self):
-    print "dtor of ", self._name
+    print("dtor of ", self._name)
 
   def __call__(self, info, cdrdata):
     data = OpenRTM_aist.ConnectorDataListenerT.__call__(self, info, cdrdata, RTC.TimedLong(RTC.Time(0,0),0))
-    print "------------------------------"
-    print "Listener:       ", self._name
-    print "Profile::name:  ", info.name
-    print "Profile::id:    ", info.id
-    print "Data:           ", data.data
-    print "------------------------------"
+    print("------------------------------")
+    print("Listener:       ", self._name)
+    print("Profile::name:  ", info.name)
+    print("Profile::id:    ", info.id)
+    print("Data:           ", data.data)
+    print("------------------------------")
     
 class ConnListener(OpenRTM_aist.ConnectorListener):
   def __init__(self, name):
     self._name = name
 
   def __del__(self):
-    print "dtor of ", self._name
+    print("dtor of ", self._name)
 
   def __call__(self, info):
-    print "------------------------------"
-    print "Listener:       ", self._name
-    print "Profile::name:  ", info.name
-    print "Profile::id:    ", info.id
-    print "------------------------------"
+    print("------------------------------")
+    print("Listener:       ", self._name)
+    print("Profile::name:  ", info.name)
+    print("Profile::id:    ", info.id)
+    print("------------------------------")
 
 
 class ConsoleIn(OpenRTM_aist.DataFlowComponentBase):
@@ -65,152 +65,152 @@ class ConsoleIn(OpenRTM_aist.DataFlowComponentBase):
     return
 
   def preOnInitializeFunc(self, ec_id):
-    print "preOnInitializeFunc"
+    print("preOnInitializeFunc")
     return
 
   def preOnFinalizeFunc(self, ec_id):
-    print "preOnFinalizeFunc"
+    print("preOnFinalizeFunc")
     return
 
   def preOnStartupFunc(self, ec_id):
-    print "preOnStartupFunc"
+    print("preOnStartupFunc")
     return
 
   def preOnShutdownFunc(self, ec_id):
-    print "preOnShutdownFunc"
+    print("preOnShutdownFunc")
     return
 
   def preOnActivatedFunc(self, ec_id):
-    print "preOnActivatedFunc"
+    print("preOnActivatedFunc")
     return
 
   def preOnDeactivatedFunc(self, ec_id):
-    print "preOnDeactivatedFunc"
+    print("preOnDeactivatedFunc")
     return
 
   def preOnAbortingFunc(self, ec_id):
-    print "preOnAbortingFunc"
+    print("preOnAbortingFunc")
     return
 
   def preOnErrorFunc(self, ec_id):
-    print "preOnErrorFunc"
+    print("preOnErrorFunc")
     return
 
   def preOnResetFunc(self, ec_id):
-    print "preOnResetFunc"
+    print("preOnResetFunc")
     return
 
   def preOnExecuteFunc(self, ec_id):
-    print "preOnExecuteFunc"
+    print("preOnExecuteFunc")
     return
 
   def preOnStateUpdateFunc(self, ec_id):
-    print "preOnStateUpdateFunc"
+    print("preOnStateUpdateFunc")
     return
     
   def preOnRateChangedFunc(self, ec_id):
-    print "preOnRateChangedFunc"
+    print("preOnRateChangedFunc")
     return
     
   def postOnInitializeFunc(self, ec_id, ret):
-    print "postOnInitializeFunc, ret: ", ret
+    print("postOnInitializeFunc, ret: ", ret)
     return
     
   def postOnFinalizeFunc(self, ec_id, ret):
-    print "postOnFinalizeFunc, ret: ", ret
+    print("postOnFinalizeFunc, ret: ", ret)
     return
     
   def postOnStartupFunc(self, ec_id, ret):
-    print "postOnStartupFunc, ret: ", ret
+    print("postOnStartupFunc, ret: ", ret)
     return
     
   def postOnShutdownFunc(self, ec_id, ret):
-    print "postOnShutdownFunc, ret: ", ret
+    print("postOnShutdownFunc, ret: ", ret)
     return
     
   def postOnActivatedFunc(self, ec_id, ret):
-    print "postOnActivatedFunc, ret: ", ret
+    print("postOnActivatedFunc, ret: ", ret)
     return
     
   def postOnDeactivatedFunc(self, ec_id, ret):
-    print "postOnDeactivatedFunc, ret: ", ret
+    print("postOnDeactivatedFunc, ret: ", ret)
     return
     
   def postOnAbortingFunc(self, ec_id, ret):
-    print "postOnAbortingFunc, ret: ", ret
+    print("postOnAbortingFunc, ret: ", ret)
     return
     
   def postOnErrorFunc(self, ec_id, ret):
-    print "postOnErrorFunc, ret: ", ret
+    print("postOnErrorFunc, ret: ", ret)
     return
     
   def postOnResetFunc(self, ec_id, ret):
-    print "postOnResetFunc, ret: ", ret
+    print("postOnResetFunc, ret: ", ret)
     return
     
   def postOnExecuteFunc(self, ec_id, ret):
-    print "postOnExecuteFunc, ret: ", ret
+    print("postOnExecuteFunc, ret: ", ret)
     return
     
   def postOnStateUpdateFunc(self, ec_id, ret):
-    print "postOnStateUpdateFunc, ret: ", ret
+    print("postOnStateUpdateFunc, ret: ", ret)
     return
     
   def postOnRateChangedFunc(self, ec_id, ret):
-    print "postOnRateChangedFunc, ret: ", ret
+    print("postOnRateChangedFunc, ret: ", ret)
     return
     
   def onAddPortFunc(self, pprof):
-    print "onAddPortFunc"
+    print("onAddPortFunc")
     return
     
   def onRemovePortFunc(self, pprof):
-    print "onRemovePortFunc"
+    print("onRemovePortFunc")
     return
     
   def onAttachExecutionContextFunc(self, ec_id):
-    print "onAttachExecutionContextFunc"
+    print("onAttachExecutionContextFunc")
     return
     
   def onDetachExecutionContextFunc(self, ec_id):
-    print "onDetachExecutionContextFunc"
+    print("onDetachExecutionContextFunc")
     return
 
 
   def onNotifyConnectFunc(self, pname, prof):
-    print "onNotifyConnectFunc pname: ",pname
+    print("onNotifyConnectFunc pname: ",pname)
     return
 
   def onNotifyDisconnectFunc(self, pname, prof):
-    print "onNotifyDisconnectFunc pname: ",pname
+    print("onNotifyDisconnectFunc pname: ",pname)
     return
 
   def onUnsubscribeInterfacesFunc(self, pname, profile):
-    print "onUnsubscribeInterfacesFunc pname: ", pname
+    print("onUnsubscribeInterfacesFunc pname: ", pname)
     return
 
   def onPublishInterfacesFunc(self, portname, profile, ret):
-    print "onPublishInterfacesFunc pname: ", portname, " ret: ", ret
+    print("onPublishInterfacesFunc pname: ", portname, " ret: ", ret)
     return
 
   def onConnectNextportFunc(self, portname, profile, ret):
-    print "onConnectNextportFunc pname: ", portname, " ret: ", ret
+    print("onConnectNextportFunc pname: ", portname, " ret: ", ret)
     return
 
   def onSubscribeInterfacesFunc(self, portname, profile, ret):
-    print "onSubscribeInterfacesFunc pname: ", portname, " ret: ", ret
+    print("onSubscribeInterfacesFunc pname: ", portname, " ret: ", ret)
     return
 
   def onConnectedFunc(self, portname, profile, ret):
-    print "onConnectedFunc pname: ", portname, " ret: ", ret
+    print("onConnectedFunc pname: ", portname, " ret: ", ret)
     return
 
   def onDisconnectNextportFunc(self, portname, profile, ret):
-    print "onDisconnectNextportFunc pname: ", portname, " ret: ", ret
+    print("onDisconnectNextportFunc pname: ", portname, " ret: ", ret)
     return
 
   def onDisconnectedFunc(self, portname, profile, ret):
-    print "onDisconnectedFunc pname: ", portname, " ret: ", ret
+    print("onDisconnectedFunc pname: ", portname, " ret: ", ret)
     return
 
 
@@ -324,12 +324,12 @@ class ConsoleIn(OpenRTM_aist.DataFlowComponentBase):
 
         
   def onExecute(self, ec_id):
-    print "Please input number: ",
-    self._data.data = long(sys.stdin.readline())
+    print("Please input number: ", end=' ')
+    self._data.data = int(sys.stdin.readline())
     if self._data.data == 9:
       return RTC.RTC_ERROR
     OpenRTM_aist.setTimestamp(self._data)
-    print "Sending to subscriber: ", self._data.data
+    print("Sending to subscriber: ", self._data.data)
     self._outport.write()
     return RTC.RTC_OK
 

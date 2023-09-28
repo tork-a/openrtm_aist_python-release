@@ -26,10 +26,10 @@ from Timer import *
 
 class test:
   def func(self):
-    print "test.hello."
+    print("test.hello.")
 
   def invoke(self):
-    print "test invoke"
+    print("test invoke")
     
 class TestTimer(unittest.TestCase):
   def setUp(self):

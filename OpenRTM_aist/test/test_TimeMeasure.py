@@ -37,12 +37,12 @@ class TestTimeMeasure(unittest.TestCase):
     _min    = [0]
     _mean   = [0]
     _stddev = [0]
-    print "count: ", self._tm.count()
-    print "result: ", self._tm.getStatistics(_max, _min, _mean, _stddev)
-    print "max: ", _max[0]
-    print "min: ", _min[0]
-    print "mean: ", _mean[0]
-    print "stddev: ", _stddev[0]
+    print("count: ", self._tm.count())
+    print("result: ", self._tm.getStatistics(_max, _min, _mean, _stddev))
+    print("max: ", _max[0])
+    print("min: ", _min[0])
+    print("mean: ", _mean[0])
+    print("stddev: ", _stddev[0])
     return
 
   def test_coutn(self):
@@ -116,15 +116,15 @@ class TestTimeMeasure(unittest.TestCase):
     mean  = [0.0]
     stdev = [0.0]
     tm_.getStatistics(maxi, mini, mean, stdev)
-    print "test_30ms"
-    print "max interval : ", maxi[0], " [sec]"
-    print "min interval : ", mini[0], " [sec]"
-    print "mean interval: ", mean[0], " [sec]"
-    print "stddev       : ", stdev[0], " [sec]"
-    self.assert_(maxi[0] < (wait_ + 0.030))
-    self.assert_(mini[0] > (wait_ - 0.010))
-    self.assert_(math.fabs(mean[0] - wait_) < 0.03)
-    self.assert_(stdev[0] < (wait_ / 5.0))
+    print("test_30ms")
+    print("max interval : ", maxi[0], " [sec]")
+    print("min interval : ", mini[0], " [sec]")
+    print("mean interval: ", mean[0], " [sec]")
+    print("stddev       : ", stdev[0], " [sec]")
+    self.assertTrue(maxi[0] < (wait_ + 0.030))
+    self.assertTrue(mini[0] > (wait_ - 0.010))
+    self.assertTrue(math.fabs(mean[0] - wait_) < 0.03)
+    self.assertTrue(stdev[0] < (wait_ / 5.0))
     return
 
   def test_1s(self):
@@ -140,15 +140,15 @@ class TestTimeMeasure(unittest.TestCase):
     mean  = [0.0]
     stdev = [0.0]
     tm_.getStatistics(maxi, mini, mean, stdev)
-    print "test_1ms"
-    print "max interval : ", maxi[0], " [sec]"
-    print "min interval : ", mini[0], " [sec]"
-    print "mean interval: ", mean[0], " [sec]"
-    print "stddev       : ", stdev[0], " [sec]"
-    self.assert_(maxi[0] < (wait_ + 0.030))
-    self.assert_(mini[0] > (wait_ - 0.010))
-    self.assert_(math.fabs(mean[0] - wait_) < 0.03)
-    self.assert_(stdev[0] < (wait_ / 5.0))
+    print("test_1ms")
+    print("max interval : ", maxi[0], " [sec]")
+    print("min interval : ", mini[0], " [sec]")
+    print("mean interval: ", mean[0], " [sec]")
+    print("stddev       : ", stdev[0], " [sec]")
+    self.assertTrue(maxi[0] < (wait_ + 0.030))
+    self.assertTrue(mini[0] > (wait_ - 0.010))
+    self.assertTrue(math.fabs(mean[0] - wait_) < 0.03)
+    self.assertTrue(stdev[0] < (wait_ / 5.0))
     return
   
 ############### test #################

@@ -340,8 +340,8 @@ class TestManager(unittest.TestCase):
   def test_formatString(self):
     profile = OpenRTM_aist.Properties(defaults_str=testcomp_spec)
     self.assertEqual(self.manager.formatString("rtc.log",profile),"rtc.log")
-    print self.manager.formatString("$(PWD)",profile)
-    print self.manager.formatString("%n.%t.%m.%v.%V.%c.%h.%M.%p",profile)
+    print(self.manager.formatString("$(PWD)",profile))
+    print(self.manager.formatString("%n.%t.%m.%v.%V.%c.%h.%M.%p",profile))
     return
 
   def test_getLogbuf(self):
