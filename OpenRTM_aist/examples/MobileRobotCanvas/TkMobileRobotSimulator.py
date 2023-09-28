@@ -21,7 +21,7 @@
 #
 
 #from Tkinter import *
-from Tix import *
+from tkinter.tix import *
 import time
 import math
 
@@ -318,7 +318,7 @@ class SimulatedObject:
     return self.simulator.get_tick()
 
 
-import tkSimpleDialog
+import tkinter.simpledialog
 
 class PropertyDialog:
   def __init__(self):
@@ -565,7 +565,8 @@ class DDMobileRobot(SimulatedObject):
     return self.name
 
 
-  def set_pos(self, (x, y, th)):
+  def set_pos(self, xxx_todo_changeme):
+    (x, y, th) = xxx_todo_changeme
     self.model.set_pos((x, y, th))
     return
 
@@ -736,9 +737,9 @@ class TkMobileRobot(Frame):
 
 
   def on_update(self):
-    for o in self.robots.keys():
+    for o in list(self.robots.keys()):
       self.robots[o].on_update()
-    for r in self.rnames.keys():
+    for r in list(self.rnames.keys()):
       self.rnames[r].draw()
     self.after(20, self.on_update)
     return
@@ -835,7 +836,7 @@ class TkMobileRobot(Frame):
 
 
   def on_rname_toggle(self):
-    for r in self.rnames.keys():
+    for r in list(self.rnames.keys()):
       self.rnames[r].toggle()
     return
 
@@ -850,9 +851,9 @@ class TkMobileRobot(Frame):
     lb = Label(frame, text="Robot Type", anchor=W, justify=LEFT)
 
     om = OptionMenu(frame, label="Type: ", variable=self.robot_kind_var)
-    for opt in self.robot_factory.keys():
+    for opt in list(self.robot_factory.keys()):
       om.add_command(opt, label=opt)
-    self.robot_kind_var.set(self.robot_factory.keys()[0])
+    self.robot_kind_var.set(list(self.robot_factory.keys())[0])
 
     creater = Button(frame, text="Create", command=self.create_robot)
     deleter = Button(frame, text="Delete", command=self.delete_robot)

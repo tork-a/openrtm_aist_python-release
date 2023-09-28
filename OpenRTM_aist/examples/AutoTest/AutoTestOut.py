@@ -85,7 +85,7 @@ class AutoTestOut(OpenRTM_aist.DataFlowComponentBase):
     try:
       self._file=open('original-data')
     except:
-      print "Can not open 'original-data' file."
+      print("Can not open 'original-data' file.")
       return RTC.RTC_ERROR
 
     return RTC.RTC_OK
