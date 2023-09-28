@@ -1,7 +1,7 @@
-From 4bbc497a153508d7e722686d6b85bf64d2cdbc10 Mon Sep 17 00:00:00 2001
+From aa59943b22fd6561815785cebeaf32ac05e599e5 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Thu, 28 Sep 2023 17:34:27 +0900
-Subject: [PATCH 2/2] replace variable named 'int' to  'int_value'
+Subject: [PATCH 2/3] replace variable named 'int' to 'int_value'
 
 ---
  OpenRTM_aist/utils/rtc-template/uuid.py | 56 ++++++++++++-------------
