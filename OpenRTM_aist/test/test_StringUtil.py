@@ -240,7 +240,7 @@ class TestStringUtil(unittest.TestCase):
     stringTo(float_,"0.123")
     stringTo(list_,"0,1.1,2.2,3.3")
     stringTo(str_,"hoge")
-    print(list_[0])
+    print list_[0]
     self.assertEqual(int_[0], 123, "Result failed.")
     self.assertEqual(long_[0], 123, "Result failed.")
     self.assertEqual(float_[0], 0.123, "Result failed.")

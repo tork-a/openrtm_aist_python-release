@@ -375,7 +375,7 @@ class TestProperties(unittest.TestCase) :
 
   
   def test_dump(self):
-    print(self.prop)
+    print self.prop
   
 
 

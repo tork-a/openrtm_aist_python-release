@@ -36,10 +36,10 @@ class TestECFactoryPython(unittest.TestCase):
     return
 
   def create_func(self):
-    print("create_func")
+    print "create_func"
 
   def del_func(self, ec):
-    print("del_func")
+    print "del_func"
     
   def test_name(self):
     name = self.ecfact.name()

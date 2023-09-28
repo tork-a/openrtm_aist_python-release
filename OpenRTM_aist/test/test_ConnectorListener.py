@@ -39,9 +39,9 @@ class DataListener(OpenRTM_aist.ConnectorDataListenerT):
 
 	def __call__(self, info, cdrdata):
 		data = OpenRTM_aist.ConnectorDataListenerT.__call__(self, info, cdrdata, RTC.TimedLong(RTC.Time(0,0),0))
-		print("------------------------------")
-		print("Listener:       ", self._name)
-		print("------------------------------")
+		print "------------------------------"
+		print "Listener:       ", self._name
+		print "------------------------------"
 		self._data = data
 		return
 
@@ -61,9 +61,9 @@ class Listener(OpenRTM_aist.ConnectorListener):
 		return
 
 	def __call__(self, info):
-		print("------------------------------")
-		print("Listener:       ", self._name)
-		print("------------------------------")
+		print "------------------------------"
+		print "Listener:       ", self._name
+		print "------------------------------"
 		return
 
 
