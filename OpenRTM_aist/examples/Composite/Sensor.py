@@ -45,7 +45,7 @@ class Sensor(OpenRTM_aist.DataFlowComponentBase):
   def onExecute(self, ec_id):
     if self._inIn.isNew():
       data = self._inIn.read()
-      print "Sensor Received data: ", data.data
+      print("Sensor Received data: ", data.data)
       self._d_out.data = data.data *2
       self._outOut.write()
     return RTC.RTC_OK

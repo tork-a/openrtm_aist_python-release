@@ -87,13 +87,13 @@ class TestPeriodicTask(unittest.TestCase):
 		self._logger = LoggerMock()
 		self._my.mysvc2.setLogger(self._logger)
 
-		self.assert_(self._pt.setTask(self._my.mysvc2))
+		self.assertTrue(self._pt.setTask(self._my.mysvc2))
 		self.assertEqual(0, self._logger.countLog("mysvc2"))
 		self._pt.activate()
 		time.sleep(0.005)
 		self._pt.finalize()
 		time.sleep(0.005)
-		self.assert_(1 < self._logger.countLog("mysvc2"))
+		self.assertTrue(1 < self._logger.countLog("mysvc2"))
 		return
 
 	def test_setPeriodic(self):
@@ -111,8 +111,8 @@ class TestPeriodicTask(unittest.TestCase):
 		time.sleep(0.1)
 		self._pt.suspend()
 		time.sleep(0.05)
-		self.assert_(4 > self._logger.countLog("mysvc2"))
-		self.assert_(0 < self._logger.countLog("mysvc2"))
+		self.assertTrue(4 > self._logger.countLog("mysvc2"))
+		self.assertTrue(0 < self._logger.countLog("mysvc2"))
 
 		self._logger.clearLog()
 		self._pt.setPeriod(0.01)
@@ -122,8 +122,8 @@ class TestPeriodicTask(unittest.TestCase):
 		time.sleep(0.1)
 		self._pt.suspend()
 		time.sleep(0.01)
-		self.assert_(12 > self._logger.countLog("mysvc2"))
-		self.assert_( 8 < self._logger.countLog("mysvc2"))
+		self.assertTrue(12 > self._logger.countLog("mysvc2"))
+		self.assertTrue( 8 < self._logger.countLog("mysvc2"))
 
 		self._logger.clearLog()
 		self._pt.setPeriod(0.05)
@@ -133,8 +133,8 @@ class TestPeriodicTask(unittest.TestCase):
 		time.sleep(0.1)
 		self._pt.finalize()
 		time.sleep(0.05)
-		self.assert_(4 > self._logger.countLog("mysvc2"))
-		self.assert_(0 < self._logger.countLog("mysvc2"))
+		self.assertTrue(4 > self._logger.countLog("mysvc2"))
+		self.assertTrue(0 < self._logger.countLog("mysvc2"))
 		return
 
 	def test_signal(self):
@@ -169,8 +169,8 @@ class TestPeriodicTask(unittest.TestCase):
 		time.sleep(0.2)
 		self._pt.suspend()
 		time.sleep(0.2)
-		self.assert_(6 > self._logger.countLog("mysvc2"))
-		self.assert_(2 < self._logger.countLog("mysvc2"))
+		self.assertTrue(6 > self._logger.countLog("mysvc2"))
+		self.assertTrue(2 < self._logger.countLog("mysvc2"))
 
 		self._pt.finalize()
 		time.sleep(0.2)
@@ -200,10 +200,10 @@ class TestPeriodicTask(unittest.TestCase):
 		ss = ss + "estat min:  " + str(estat._min_interval) + "\n"
 		ss = ss + "estat mean: " + str(estat._mean_interval) + "\n"
 		ss = ss + "estat sdev: " + str(estat._std_deviation) + "\n"
-		self.assert_(estat._max_interval < (wait + 0.030), ss)
-		self.assert_(estat._min_interval > (wait - 0.03), ss)
-		self.assert_(abs(estat._mean_interval - wait) < 0.03, ss)
-		self.assert_(estat._std_deviation < (wait / 5.0), ss)
+		self.assertTrue(estat._max_interval < (wait + 0.030), ss)
+		self.assertTrue(estat._min_interval > (wait - 0.03), ss)
+		self.assertTrue(abs(estat._mean_interval - wait) < 0.03, ss)
+		self.assertTrue(estat._std_deviation < (wait / 5.0), ss)
 
 		# executionMeasureConut: 5
 		self._pt.executionMeasureCount(5)
@@ -218,10 +218,10 @@ class TestPeriodicTask(unittest.TestCase):
 		ss = ss + "estat min:  " + str(estat._min_interval) + "\n"
 		ss = ss + "estat mean: " + str(estat._mean_interval) + "\n"
 		ss = ss + "estat sdev: " + str(estat._std_deviation) + "\n"
-		self.assert_(estat._max_interval < (wait + 0.030), ss)
-		self.assert_(estat._min_interval > (wait - 0.03), ss)
-		self.assert_(abs(estat._mean_interval - wait) < 0.03, ss)
-		self.assert_(estat._std_deviation < (wait / 5.0), ss)
+		self.assertTrue(estat._max_interval < (wait + 0.030), ss)
+		self.assertTrue(estat._min_interval > (wait - 0.03), ss)
+		self.assertTrue(abs(estat._mean_interval - wait) < 0.03, ss)
+		self.assertTrue(estat._std_deviation < (wait / 5.0), ss)
 
 		# executionMeasureConut: lessthan
 		self._pt.executionMeasureCount(10)
@@ -233,10 +233,10 @@ class TestPeriodicTask(unittest.TestCase):
 		estat2 = self._pt.getExecStat()
 
 		# periodicMeasureConut: lessthan
-		self.assert_(estat._max_interval == estat2._max_interval)
-		self.assert_(estat._min_interval == estat2._min_interval)
-		self.assert_(estat._mean_interval == estat2._mean_interval)
-		self.assert_(estat._std_deviation == estat2._std_deviation)
+		self.assertTrue(estat._max_interval == estat2._max_interval)
+		self.assertTrue(estat._min_interval == estat2._min_interval)
+		self.assertTrue(estat._mean_interval == estat2._mean_interval)
+		self.assertTrue(estat._std_deviation == estat2._std_deviation)
 		return
 
 	def test_periodicMeasure(self):
@@ -257,10 +257,10 @@ class TestPeriodicTask(unittest.TestCase):
 		self._pt.suspend()
 		time.sleep(0.05)
 		pstat = self._pt.getPeriodStat()
-		self.assert_(pstat._max_interval < (wait + 0.030))
-		self.assert_(pstat._min_interval > (wait - 0.050))
-		self.assert_(abs(pstat._mean_interval - wait) < 0.03)
-		self.assert_(pstat._std_deviation < (wait / 1.0))
+		self.assertTrue(pstat._max_interval < (wait + 0.030))
+		self.assertTrue(pstat._min_interval > (wait - 0.050))
+		self.assertTrue(abs(pstat._mean_interval - wait) < 0.03)
+		self.assertTrue(pstat._std_deviation < (wait / 1.0))
 
 		# periodicMeasureConut:5
 		self._pt.periodicMeasureCount(5)
@@ -269,10 +269,10 @@ class TestPeriodicTask(unittest.TestCase):
 		self._pt.suspend()
 		time.sleep(0.05)
 		pstat = self._pt.getPeriodStat()
-		self.assert_(pstat._max_interval < (wait + 0.030))
-		self.assert_(pstat._min_interval > (wait - 0.010))
-		self.assert_(abs(pstat._mean_interval - wait) < 0.03)
-		self.assert_(pstat._std_deviation < (wait / 5.0))
+		self.assertTrue(pstat._max_interval < (wait + 0.030))
+		self.assertTrue(pstat._min_interval > (wait - 0.010))
+		self.assertTrue(abs(pstat._mean_interval - wait) < 0.03)
+		self.assertTrue(pstat._std_deviation < (wait / 5.0))
 
 		# periodicMeasureConut: lessthan
 		self._pt.periodicMeasureCount(10)

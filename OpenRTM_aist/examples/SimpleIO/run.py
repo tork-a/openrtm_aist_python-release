@@ -16,7 +16,7 @@
 
 import sys,os,platform
 import time
-import commands
+import subprocess
 
 nsport="2809"
 sysinfo = platform.uname()
@@ -32,22 +32,22 @@ def main():
     os.system("python Connector.py")
 
   else:
-    status,term=commands.getstatusoutput("which xterm")
+    status,term=subprocess.getstatusoutput("which xterm")
     term += " -e"
     if status != 0:
-      status,term=commands.getstatusoutput("which kterm")
+      status,term=subprocess.getstatusoutput("which kterm")
       term += " -e"
 
     if status != 0:
-      status,term=commands.getstatusoutput("which uxterm")
+      status,term=subprocess.getstatusoutput("which uxterm")
       term += " -e"
       
     if status != 0:
-      status,term=commands.getstatusoutput("which gnome-terminal")
+      status,term=subprocess.getstatusoutput("which gnome-terminal")
       term += " -x"
 
     if status != 0:
-      print "No terminal program (kterm/xterm/gnome-terminal) exists."
+      print("No terminal program (kterm/xterm/gnome-terminal) exists.")
       sys.exit(0)
 
     path = None
@@ -56,7 +56,7 @@ def main():
         path = os.path.join(p,"OpenRTM_aist","utils","rtm-naming")
         break
     if path is None:
-      print "rtm-naming directory not exist."
+      print("rtm-naming directory not exist.")
       sys.exit(0)
 
     os.system('python %s/rtm-naming.py &'%path)

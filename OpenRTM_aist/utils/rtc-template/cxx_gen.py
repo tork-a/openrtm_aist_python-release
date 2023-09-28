@@ -58,9 +58,9 @@
 import re
 import os
 import sys
-import StringIO
-import ezt
-import gen_base
+import io
+from . import ezt
+from . import gen_base
 
 
 def description():
@@ -808,18 +808,18 @@ class cxx_gen(gen_base.gen_base):
 				idl_include = self.data["idl_include"]
 				impl_suffix = self.data["impl_suffix"]
 				skel_suffix = self.data["skel_suffix"]
-				import cxx_svc_impl
+				from . import cxx_svc_impl
 				ifs = cxx_svc_impl.generate(svc_idl.idl_fname,
 							    idl_include,
 							    impl_suffix,
 							    skel_suffix,
 							    fd_h, fd_cpp)
-				print "  File \"" \
+				print("  File \"" \
 				    + svc_idl.impl_h \
-				    + "\" was generated."
-				print "  File \"" \
+				    + "\" was generated.")
+				print("  File \"" \
 				    + svc_idl.impl_cpp \
-				    + "\" was generated."
+				    + "\" was generated.")
 			except:
 				sys.stderr.write("Generate error: " \
 						 + svc_idl.impl_h

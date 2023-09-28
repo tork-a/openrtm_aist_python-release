@@ -69,21 +69,21 @@ class TimeValue:
       else:
         dbHalfAdj_ = -0.5
         
-      self.tv_sec = long(sec)
-      self.tv_usec = long((sec - float(self.tv_sec)) *
+      self.tv_sec = int(sec)
+      self.tv_usec = int((sec - float(self.tv_sec)) *
                           float(TIMEVALUE_ONE_SECOND_IN_USECS) + dbHalfAdj_)
       self.normalize()
       return
 
     if sec is None:
-      self.tv_sec = long(0)
+      self.tv_sec = int(0)
     else:
-      self.tv_sec = long(sec)
+      self.tv_sec = int(sec)
 
     if usec is None:
-      self.tv_usec = long(0)
+      self.tv_usec = int(0)
     else:
-      self.tv_usec = long(usec)
+      self.tv_usec = int(usec)
     self.normalize()
     return
 
@@ -189,8 +189,8 @@ class TimeValue:
   def set_time(self, time):
     global TIMEVALUE_ONE_SECOND_IN_USECS
 
-    self.tv_sec  = long(time)
-    self.tv_usec = long((time - float(self.tv_sec)) * float(TIMEVALUE_ONE_SECOND_IN_USECS))
+    self.tv_sec  = int(time)
+    self.tv_usec = int((time - float(self.tv_sec)) * float(TIMEVALUE_ONE_SECOND_IN_USECS))
     return self
 
   ##
