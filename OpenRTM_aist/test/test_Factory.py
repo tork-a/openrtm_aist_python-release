@@ -29,7 +29,7 @@ class testClass:
     pass
 
   def test(self,mgr):
-    print "testClass: ", mgr
+    print("testClass: ", mgr)
 
 class TestFactoryPython(unittest.TestCase):
 

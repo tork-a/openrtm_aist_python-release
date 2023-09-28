@@ -1430,7 +1430,7 @@ class CorbaPort(OpenRTM_aist.PortBase):
       try:
         OpenRTM_aist.Manager.instance().getPOA().activate_object_with_id(self._oid, self._servant)
       except:
-        print OpenRTM_aist.Logger.print_exception()
+        print(OpenRTM_aist.Logger.print_exception())
       return
 
     # void deactivate()
@@ -1438,7 +1438,7 @@ class CorbaPort(OpenRTM_aist.PortBase):
       try:
         OpenRTM_aist.Manager.instance().getPOA().deactivate_object(self._oid)
       except:
-        print OpenRTM_aist.Logger.print_exception()
+        print(OpenRTM_aist.Logger.print_exception())
       return
     
 
@@ -1528,7 +1528,7 @@ class CorbaPort(OpenRTM_aist.PortBase):
             obj = any.from_any(nv.value, keep_structs=True)
             self._cons[i].setObject(obj)
           except:
-            print OpenRTM_aist.Logger.print_exception()
+            print(OpenRTM_aist.Logger.print_exception())
 
 
 

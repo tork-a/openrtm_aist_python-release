@@ -51,8 +51,8 @@ class Motor(OpenRTM_aist.DataFlowComponentBase):
   def onExecute(self, ec_id):
     if self._inIn.isNew():
       data = self._inIn.read()
-      print "Motor Received data: ", data.data
-      self._d_out.data = long(data.data *2)
+      print("Motor Received data: ", data.data)
+      self._d_out.data = int(data.data *2)
       self._outOut.write()
     return RTC.RTC_OK
   

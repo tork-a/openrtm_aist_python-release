@@ -20,7 +20,7 @@
 # $Log$
 #
 
-from Tix import *
+from tkinter.tix import *
 import time
 import math
 
@@ -641,7 +641,7 @@ class TkLRFViewer(Frame):
       w.pack(side=TOP, anchor=W, fill=X)
 
   def on_rname_toggle(self):
-    for r in self.rnames.keys():
+    for r in list(self.rnames.keys()):
       self.rnames[r].toggle()
     return
 

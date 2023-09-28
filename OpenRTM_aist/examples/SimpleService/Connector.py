@@ -10,10 +10,10 @@ import RTC
 import OpenRTM_aist
 
 def usage():
-    print "usage: ConnectorComp [options]"
-    print " python MyServiceProvider.py  "
-    print " python MyServiceConsumer.py  "
-    print " python Connector.py  "
+    print("usage: ConnectorComp [options]")
+    print(" python MyServiceProvider.py  ")
+    print(" python MyServiceConsumer.py  ")
+    print(" python Connector.py  ")
 
 
 def main():
