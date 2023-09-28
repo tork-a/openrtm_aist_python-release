@@ -21,7 +21,7 @@
 # $Log$
 #
 
-from Tkinter import *
+from tkinter import *
 import time
 import math
 import mutex
@@ -119,7 +119,7 @@ class CanvasCircle(ToggleItem):
             circnum = 0
         else:
             circnum = max(self.width, self.height) / self.pitch
-        circrange = range(circnum)
+        circrange = list(range(circnum))
         circrange.reverse()
         for i in circrange:
             x0 = self.x - self.pitch * i
@@ -535,7 +535,7 @@ def test ():
 
     while 1:
         m.update()
-        print m.get_pos()
+        print(m.get_pos())
 
 
 if  __name__ == '__main__': test()

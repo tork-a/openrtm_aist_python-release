@@ -42,8 +42,8 @@
 import re
 import os
 import time
-import ezt
-import gen_base
+from . import ezt
+from . import gen_base
 
 readme = """======================================================================
   RTComponent: [module.name] specificatioin
