@@ -1,4 +1,4 @@
-From aa59943b22fd6561815785cebeaf32ac05e599e5 Mon Sep 17 00:00:00 2001
+From 2879616453af05637ddec4023b34f760a00ddb24 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Thu, 28 Sep 2023 17:34:27 +0900
 Subject: [PATCH 2/3] replace variable named 'int' to 'int_value'
