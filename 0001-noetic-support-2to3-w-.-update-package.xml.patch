@@ -1,0 +1,25 @@
+From 30b45fb75d962e3cf59511ab28cf23c7ad15d310 Mon Sep 17 00:00:00 2001
+From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Date: Thu, 28 Sep 2023 17:30:05 +0900
+Subject: [PATCH 1/2] noetic support: 2to3 -w ., update package.xml
+
+---
+ package.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/package.xml b/package.xml
+index 2a46da0..ab887b2 100644
+--- a/package.xml
++++ b/package.xml
+@@ -27,7 +27,7 @@
+ 
+   <buildtool_depend>cmake</buildtool_depend>
+ 
+-  <build_depend>python-setuptools</build_depend>
++  <build_depend>python3-setuptools</build_depend>
+   <build_depend>python-omniorb</build_depend>
+   <build_depend>doxygen</build_depend>
+ 
+-- 
+2.25.1
+
