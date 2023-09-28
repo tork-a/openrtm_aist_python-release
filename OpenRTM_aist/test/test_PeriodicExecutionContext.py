@@ -73,54 +73,54 @@ class DFP(OpenRTM_aist.RTObject_impl):
     return None
 
   def on_initialize(self):
-    print "on_initialize()"
+    print("on_initialize()")
     return RTC.RTC_OK
 
   def on_finalize(self):
-    print "on_finalize()"
+    print("on_finalize()")
     return RTC.RTC_OK
 
   def on_startup(self, id):
-    print "on_startup()"
+    print("on_startup()")
     return RTC.RTC_OK
 
   def on_shutdown(self, id):
-    print "shutdown()"
+    print("shutdown()")
     return RTC.RTC_OK
 
   def on_activated(self, id):
-    print "activated()"
+    print("activated()")
     return RTC.RTC_OK
 
   def on_deactivated(self, id):
-    print "deactivated()"
+    print("deactivated()")
     return RTC.RTC_OK
 
   def on_aborting(self, id):
-    print "on_aborting()"
+    print("on_aborting()")
     return RTC.RTC_OK
   
   def on_error(self, id):
-    print "on_error()"
+    print("on_error()")
     return RTC.RTC_OK
   
   def on_reset(self, id):
-    print "on_reset()"
+    print("on_reset()")
     return RTC.RTC_OK
 
   def on_execute(self, id):
-    print "on_execute()"
+    print("on_execute()")
     if self._error:
       self._error = False
       return RTC.RTC_ERROR
     return RTC.RTC_OK
     
   def on_state_update(self, id):
-    print "on_state_update()"
+    print("on_state_update()")
     return RTC.RTC_OK
 
   def on_rate_changed(self, id):
-    print "on_rate_changed()"
+    print("on_rate_changed()")
     return RTC.RTC_OK
 
   def get_owned_organizations(self):
@@ -190,8 +190,8 @@ class TestPeriodicExecutionContext(unittest.TestCase):
     
 
   def test_case(self):
-    print "rate: ", self._pec.get_rate()
-    print "kind: ", self._pec.get_kind()
+    print("rate: ", self._pec.get_rate())
+    print("kind: ", self._pec.get_kind())
     self._pec.activate_component(self._dfp.getRef())
     #for i in range(3):
     # state = self._pec.get_component_state(self._dfp.getRef())
@@ -204,7 +204,7 @@ class TestPeriodicExecutionContext(unittest.TestCase):
   
   def test_set_rate(self):
     self._pec.set_rate(1000)
-    print "get rate: ", self._pec.get_rate()
+    print("get rate: ", self._pec.get_rate())
 
   
   def test_activate_component(self):
@@ -216,19 +216,19 @@ class TestPeriodicExecutionContext(unittest.TestCase):
 
   def test_reset_component(self):
     self._pec.reset_component(self._dfp.getRef())
-    print "reset state: ", self._pec.get_component_state(self._dfp.getRef())
+    print("reset state: ", self._pec.get_component_state(self._dfp.getRef()))
     self._pec.activate_component(self._dfp.getRef())
-    print "activate state: ", self._pec.get_component_state(self._dfp.getRef())
+    print("activate state: ", self._pec.get_component_state(self._dfp.getRef()))
 
   
   def test_remove(self):
     self._pec.remove_component(self._dfp.getRef())
     self._pec.activate_component(self._dfp.getRef())
-    print "activate state: ", self._pec.get_component_state(self._dfp.getRef())
+    print("activate state: ", self._pec.get_component_state(self._dfp.getRef()))
 
 
   def test_get_profile(self):
-    print "get_profile.kind: ", self._pec.get_profile().kind
+    print("get_profile.kind: ", self._pec.get_profile().kind)
 
   
 

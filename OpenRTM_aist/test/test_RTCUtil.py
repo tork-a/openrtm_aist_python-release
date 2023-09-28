@@ -46,24 +46,24 @@ class TestRTCUtil(unittest.TestCase):
   def test_isDataFlowComponent(self):
     dfp_i = test()
     dfp = dfp_i._this()
-    print isDataFlowComponent(dfp)
+    print(isDataFlowComponent(dfp))
 
   def test_isFsmParticipant(self):
     dfp_i = test()
     dfp = dfp_i._this()
-    print isFsmParticipant(dfp)
+    print(isFsmParticipant(dfp))
 
 
   def test_isFsmObject(self):
     dfp_i = test()
     dfp = dfp_i._this()
-    print isFsmObject(dfp)
+    print(isFsmObject(dfp))
 
 
   def test_isMultiModeObject(self):
     dfp_i = test()
     dfp = dfp_i._this()
-    print isMultiModeObject(dfp)
+    print(isMultiModeObject(dfp))
 
 
 

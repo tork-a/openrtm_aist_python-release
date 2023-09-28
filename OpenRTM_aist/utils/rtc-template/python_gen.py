@@ -28,8 +28,8 @@
 
 import re
 import os
-import ezt
-import gen_base
+from . import ezt
+from . import gen_base
 
 import string
 import sys
@@ -273,7 +273,7 @@ class python_gen(gen_base.gen_base):
               break
           f.close()
         except IOError:
-          print "Can't find file:", file
+          print("Can't find file:", file)
 
       self.tags["consumer_import"] = consumer_import
         
@@ -327,7 +327,7 @@ class python_gen(gen_base.gen_base):
     if str(_type) == "int":
       return int
     elif str(_type) == "long":
-      return long
+      return int
     elif str(_type) == "float":
       return float
     elif str(_type) == "double":
@@ -354,9 +354,9 @@ class python_gen(gen_base.gen_base):
              + svc_idl.impl_py + "\n")
 
 
-      print "  File \"" \
+      print("  File \"" \
             + svc_idl.impl_py \
-            + "\" was generated."
+            + "\" was generated.")
 
     for cons in self.data["consumer_idl"]:
       dup = False

@@ -32,7 +32,7 @@ class OnRWTest:
     pass
 
   def echo(self, value=None):
-    print "OnRW Called"
+    print("OnRW Called")
 
 
 class OnRWConvertTest:
@@ -40,7 +40,7 @@ class OnRWConvertTest:
     pass
 
   def echo(self, value=None):
-    print "OnRWConvert Called"
+    print("OnRWConvert Called")
     return value
 
 

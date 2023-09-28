@@ -31,7 +31,7 @@ from Singleton import *
 class SingletonMock(Singleton):
 	_cnt = 0
 	def __init__(self):
-		print "SingletonMock"
+		print("SingletonMock")
 		#self._cnt = 0
 		pass
 
@@ -52,12 +52,12 @@ class TestSingleton(unittest.TestCase):
 
 	def test_SingletonCase(self):
 		mock = SingletonMock()
-		print "Singleton 0"
+		print("Singleton 0")
 		mock0 = SingletonMock()
-		print "mock0 ", mock0
-		print "Singleton 1"
+		print("mock0 ", mock0)
+		print("Singleton 1")
 		mock1 = SingletonMock()
-		print "mock1 ", mock1
+		print("mock1 ", mock1)
 		self.assertEqual(mock0.get(), 0)
 		self.assertEqual(mock1.get(), 0)
 		mock0.up()
@@ -67,7 +67,7 @@ class TestSingleton(unittest.TestCase):
 		self.assertEqual(mock0.get(), 2)
 		self.assertEqual(mock1.get(), 2)
 		mock2 = SingletonMock.instance()
-		print "mock2 ", mock2
+		print("mock2 ", mock2)
 		self.assertEqual(mock0.get(), 2)
 		self.assertEqual(mock1.get(), 2)
 		self.assertEqual(mock2.get(), 2)

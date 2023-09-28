@@ -46,7 +46,7 @@ from omniidl import idlast, idlvisitor
 from omniidl_be.cxx import ast, util, id, types, output
 
 # import myself
-import cxx_svc_impl
+from . import cxx_svc_impl
 self = cxx_svc_impl
 
 
@@ -291,7 +291,7 @@ class BuildInterfaceImplementations(idlvisitor.AstVisitor):
 		# since this implementation class is not inheriting from anywhere
 		# other than the IDL skeleton
 		allInterfaces = [node] + ast.allInherits(node)
-		allCallables = util.fold( map(lambda x:x.callables(), allInterfaces),
+		allCallables = util.fold( [x.callables() for x in allInterfaces],
 								  [], lambda x, y: x + y )
 
 
@@ -350,7 +350,7 @@ class BuildInterfaceImplementations(idlvisitor.AstVisitor):
 				raise "No code for interface member: " + repr(c)
 
 		# the class definition has no actual code...
-		defs = string.join(map(lambda x:x + ";\n", declarations), "")
+		defs = string.join([x + ";\n" for x in declarations], "")
 
 		# Output the class definition of the implementation
 		self.stream_h.out(interface_def,
@@ -361,15 +361,14 @@ class BuildInterfaceImplementations(idlvisitor.AstVisitor):
 						  operations = defs)
 
 		# Output the class methods implementations
-		impls = string.join(map(lambda x: x + """\
+		impls = string.join([x + """\
 
 {
   // Please insert your code here and remove the following warning pragma
   #warning "Code missing in function <""" + x + """>"
 }
 
-""",
-								implementations), "")
+""" for x in implementations], "")
 		
 		self.stream_cpp.out(interface_code,
 							fqname = fqname,
@@ -379,7 +378,7 @@ class BuildInterfaceImplementations(idlvisitor.AstVisitor):
 
 
 if __name__ == "__main__":
-	import cxx_svc_impl
+	from . import cxx_svc_impl
 	import sys
-	print "Interfaces:"
-	print cxx_svc_impl.generate(sys.argv[1], "SVC_impl")
+	print("Interfaces:")
+	print(cxx_svc_impl.generate(sys.argv[1], "SVC_impl"))
