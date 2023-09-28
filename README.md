@@ -1,3 +1,26 @@
+## openrtm_aist_python (noetic) - 1.1.0-1
+
+The packages in the `openrtm_aist_python` repository were released into the `noetic` distro by running `/home/k-okada/.local/bin/bloom-release openrtm_aist_python --track noetic --ros-distro noetic` on `Thu, 28 Sep 2023 06:51:40 -0000`
+
+The `openrtm_aist_python` package was released.
+
+Version of package(s) in repository `openrtm_aist_python`:
+
+- upstream repository: https://github.com/OpenRTM/OpenRTM-aist-Python.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `1.1.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.11.2`
+- catkin_pkg version: `0.5.2`
+- rosdep version: `0.22.2`
+- rosdistro version: `0.9.0`
+- vcstools version: `0.1.42`
+
+
 ## openrtm_aist_python (melodic) - 1.1.0-2
 
 The packages in the `openrtm_aist_python` repository were released into the `melodic` distro by running `/usr/bin/bloom-release -y openrtm_aist_python --rosdistro melodic --track melodic` on `Wed, 14 Oct 2020 14:13:39 -0000`
