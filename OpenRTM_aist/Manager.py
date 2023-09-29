@@ -21,7 +21,7 @@ import traceback
 import sys
 import time
 from omniORB import CORBA, PortableServer
-from types import IntType, ListType
+#from types import IntType, ListType
 
 import OpenRTM_aist
 import RTC
@@ -164,8 +164,8 @@ class Manager:
     if len(arg) == 1:
       argv = arg[0]
     elif len(arg) == 2 and \
-             isinstance(arg[0], IntType) and \
-             isinstance(arg[1], ListType):
+             isinstance(arg[0], int) and \
+             isinstance(arg[1], list):
       # for 0.4.x
       argv = arg[1]
     else:
