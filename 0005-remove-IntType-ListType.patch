@@ -1,0 +1,36 @@
+From 3290ed1574ccf49a782abc74a3960d6d463daee0 Mon Sep 17 00:00:00 2001
+From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Date: Fri, 29 Sep 2023 17:07:29 +0900
+Subject: [PATCH 5/5] remove IntType, ListType
+
+---
+ OpenRTM_aist/Manager.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/OpenRTM_aist/Manager.py b/OpenRTM_aist/Manager.py
+index 4178b75..08ef9da 100644
+--- a/OpenRTM_aist/Manager.py
++++ b/OpenRTM_aist/Manager.py
+@@ -21,7 +21,7 @@ import traceback
+ import sys
+ import time
+ from omniORB import CORBA, PortableServer
+-from types import IntType, ListType
++#from types import IntType, ListType
+ 
+ import OpenRTM_aist
+ import RTC
+@@ -164,8 +164,8 @@ class Manager:
+     if len(arg) == 1:
+       argv = arg[0]
+     elif len(arg) == 2 and \
+-             isinstance(arg[0], IntType) and \
+-             isinstance(arg[1], ListType):
++             isinstance(arg[0], int) and \
++             isinstance(arg[1], list):
+       # for 0.4.x
+       argv = arg[1]
+     else:
+-- 
+2.25.1
+
