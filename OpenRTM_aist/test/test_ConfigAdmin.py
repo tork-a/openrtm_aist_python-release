@@ -292,7 +292,7 @@ class ConfigParamListenerCallback(OpenRTM_aist.ConfigurationParamListener):
     return
 
   def __call__(self, config_set_name, config_param_name):
-    print("ConfigParamListenerCallback called")
+    print "ConfigParamListenerCallback called"
     return
 
 class ConfigSetListenerCallback(OpenRTM_aist.ConfigurationSetListener):
@@ -301,7 +301,7 @@ class ConfigSetListenerCallback(OpenRTM_aist.ConfigurationSetListener):
     return
 
   def __call__(self, config_set):
-    print("ConfigSetListenerCallback called")
+    print "ConfigSetListenerCallback called"
     return
 
 class ConfigSetNameListenerCallback(OpenRTM_aist.ConfigurationSetNameListener):
@@ -310,7 +310,7 @@ class ConfigSetNameListenerCallback(OpenRTM_aist.ConfigurationSetNameListener):
     return
 
   def __call__(self, config_set_name):
-    print("ConfigSetNameListenerCallback called")
+    print "ConfigSetNameListenerCallback called"
     return
 
 

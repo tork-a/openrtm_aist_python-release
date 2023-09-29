@@ -31,7 +31,7 @@ class test_comp(OpenRTM_aist.RTObject_impl):
 		pass
 		
 	def echo(self, msg):
-		print(msg)
+		print msg
 		return msg
 
 class TestNamingManager(unittest.TestCase):

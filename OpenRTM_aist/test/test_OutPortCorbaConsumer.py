@@ -38,7 +38,7 @@ class OutPortTest(RTC__POA.OutPortAny):
 		
 		
 	def get(self):
-		print("Called get operation.")
+		print "Called get operation."
 		return any.to_any(RTC.TimedLong(RTC.Time(0,0),123))
 
 

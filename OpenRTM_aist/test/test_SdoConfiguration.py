@@ -194,7 +194,7 @@ class TestConfiguration_impl(unittest.TestCase):
     self._sdoconf.getOrganizations()
 
   def test_getUUID(self):
-    print(self._sdoconf.getUUID())
+    print self._sdoconf.getUUID()
 
 
 

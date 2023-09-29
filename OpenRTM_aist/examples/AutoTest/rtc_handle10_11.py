@@ -11,7 +11,7 @@ import OpenRTM_aist
 import RTC
 
 
-from .CorbaNaming import *
+from CorbaNaming import *
 import SDOPackage
 # from EmbryonicRtc import *
 
@@ -94,21 +94,21 @@ class NameSpace :
         if bd.binding_type == CosNaming.nobject :
             tmp = name_context.resolve(bd.binding_name)
             self.obj_list[nam]=tmp
-            print('objcet '+nam+' was listed.')
+            print 'objcet '+nam+' was listed.'
             try :
                 tmp = tmp._narrow(RTC.RTObject)
             except :
-                print(nam+' is not RTC.')
+                print nam+' is not RTC.'
                 tmp = None
             try :
                 if tmp :
                    rslt = [[nam, tmp]]
                    self.rtc_handles[nam]=RtcHandle(nam,self,tmp)
-                   print('handle for '+nam+' was created.')
+                   print 'handle for '+nam+' was created.'
                 else :
                    pass
             except :
-                print(nam+' is not alive.' , sys.exc_info()[0])
+                print nam+' is not alive.' , sys.exc_info()[0]
                 pass
         else :
             tmp = name_context.resolve(bd.binding_name)
@@ -126,7 +126,7 @@ def nvlist2dict(nvlist) :
     return rslt
 def dict2nvlist(dict) :
     rslt = []
-    for tmp in list(dict.keys()) :
+    for tmp in dict.keys() :
         rslt.append(SDOPackage.NameValue(tmp, any.to_any(dict[tmp])))
     return rslt
 #
@@ -159,7 +159,7 @@ class Connector :
            for pp in self.plist :  
                if not ((self.prop_dict_req[kk] in pp.prop[kk]) or 
                                  ('Any' in    pp.prop[kk])) :
-                   print(kk, self.prop_dict_req[kk])
+                   print kk, self.prop_dict_req[kk]
                    self.prop_dict_req[kk] = ""
                    self.possible = False
        self.prop_nvlist_req = dict2nvlist(self.prop_dict_req)
@@ -218,7 +218,7 @@ class Port :
         tmp1 = self.get_connections()
         tmp2 = [pp.connector_id for pp in tmp1]
         if self.con.profile.connector_id in tmp2 :
-            print("connecting")
+            print "connecting"
             self.con.disconnect()
 
     def get_connections(self) :
@@ -303,7 +303,7 @@ class RtcInport(Port) :
 #        self.data_class = eval('RTC.' + self.prop['dataport.data_type'])
 #        self.data_tc = eval('RTC._tc_' + self.prop['dataport.data_type'])
         tmp=strip_data_class(self.prop['dataport.data_type'])
-        print(tmp)
+        print tmp
         self.data_class = eval('RTC.' + tmp)
         self.data_tc = eval('RTC._tc_' + tmp)
     def write(self,data) :
@@ -349,7 +349,7 @@ class RtcOutport(Port) :
            except :
                 return None
         else :
-           print("not supported")
+           print "not supported"
            return None
 
     def open(self) :
@@ -399,7 +399,7 @@ class RtcHandle :
         tmp = pp.get_port_profile()
         tmp_prop = nvlist2dict(tmp.properties)
         tmp_name = tmp.name.lstrip(self.name.split('.')[0]).lstrip('.')
-        print('port_name:', tmp_name)
+        print 'port_name:', tmp_name
 #       self.ports[tmp.name]=Port(tmp, tmp_prop)
         if tmp_prop['port.port_type']=='DataInPort' :
             self.inports[tmp_name]=RtcInport(tmp,tmp_prop, self)

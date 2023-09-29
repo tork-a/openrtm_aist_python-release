@@ -5,7 +5,7 @@
 # Target Python version 2.4, 2.5, 2.6
 #
 
-import os, glob, sys, winreg
+import os, glob, sys, _winreg
 
 ##--------------------------------------------------------------------
 ## commandline argument
@@ -26,17 +26,17 @@ if argc > 1:
 ## Install check and IDL Compile
 ##--------------------------------------------------------------------
 def idl_compile(chk_ver, reg_key, exa_path):
-  reg_root = winreg.HKEY_LOCAL_MACHINE
+  reg_root = _winreg.HKEY_LOCAL_MACHINE
 
   try:
     InstallPath = None
     index = 0
 
     ## Get InstallPath
-    reg_hdl = winreg.OpenKey(reg_root, reg_key)
-    reg_data = winreg.EnumValue(reg_hdl, index)
+    reg_hdl = _winreg.OpenKey(reg_root, reg_key)
+    reg_data = _winreg.EnumValue(reg_hdl, index)
     InstallPath = reg_data[1]
-    winreg.CloseKey(reg_hdl)
+    _winreg.CloseKey(reg_hdl)
 
     if InstallPath.rfind("\\") != (len(InstallPath) -1):
       InstallPath += "\\"
@@ -94,7 +94,7 @@ if (inst_ver == "all") or (inst_ver == "2.4"):
   py_key = "SOFTWARE\\Python\\PythonCore\\2.4\\InstallPath"
   ret = idl_compile(py_ver, py_key, examples_path)
   if ret == False:
-    print("Python %s Not Installed." % py_ver)
+    print "Python %s Not Installed." % py_ver
 
 
 ##--------------------------------------------------------------------
@@ -105,7 +105,7 @@ if (inst_ver == "all") or (inst_ver == "2.5"):
   py_key = "SOFTWARE\\Python\\PythonCore\\2.5\\InstallPath"
   ret = idl_compile(py_ver, py_key, examples_path)
   if ret == False:
-    print("Python %s Not Installed." % py_ver)
+    print "Python %s Not Installed." % py_ver
 
 
 ##--------------------------------------------------------------------
@@ -116,5 +116,5 @@ if (inst_ver == "all") or (inst_ver == "2.6"):
   py_key = "SOFTWARE\\Python\\PythonCore\\2.6\\InstallPath"
   ret = idl_compile(py_ver, py_key, examples_path)
   if ret == False:
-    print("Python %s Not Installed." % py_ver)
+    print "Python %s Not Installed." % py_ver
 

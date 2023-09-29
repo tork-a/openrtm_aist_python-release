@@ -33,9 +33,9 @@ class Mock(Task):
 		self.flag = False
 
 	def svc(self):
-		print("cnt: ", end=' ')
+		print "cnt: ",
 		while self.flag:
-			print(self.cnt, " ", end=' ')
+			print self.cnt, " ",
 			time.sleep(0.1)
 		return
 
