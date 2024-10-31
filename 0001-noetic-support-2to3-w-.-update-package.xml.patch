@@ -1,7 +1,7 @@
-From f15b681f6418af6e93cdb1ff94818dd0bf1606d1 Mon Sep 17 00:00:00 2001
+From f3c6681721d4a87e9def3fbb101e8ed60497c8ed Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Thu, 28 Sep 2023 17:30:05 +0900
-Subject: [PATCH 1/5] noetic support: 2to3 -w ., update package.xml
+Subject: [PATCH 1/6] noetic support: 2to3 -w ., update package.xml
 
 ---
  package.xml | 2 +-

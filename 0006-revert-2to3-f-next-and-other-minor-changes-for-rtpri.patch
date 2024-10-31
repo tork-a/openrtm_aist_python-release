@@ -1,0 +1,128 @@
+From 27c01923f443cd5eea82642f17cca4aea9f05a0e Mon Sep 17 00:00:00 2001
+From: kirohy <yoshioka@jsk.imi.i.u-tokyo.ac.jp>
+Date: Thu, 31 Oct 2024 17:39:44 +0900
+Subject: [PATCH 6/6] revert 2to3 -f next and other minor changes for rtprint
+
+---
+ OpenRTM_aist/NumberingPolicy.py        |  2 +-
+ OpenRTM_aist/SdoServiceAdmin.py        |  2 +-
+ OpenRTM_aist/StateMachine.py           | 12 ++++++------
+ OpenRTM_aist/test/test_StateMachine.py |  4 ++--
+ OpenRTM_aist/uuid.py                   |  2 +-
+ 5 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/OpenRTM_aist/NumberingPolicy.py b/OpenRTM_aist/NumberingPolicy.py
+index 384640c..d713326 100644
+--- a/OpenRTM_aist/NumberingPolicy.py
++++ b/OpenRTM_aist/NumberingPolicy.py
+@@ -46,7 +46,7 @@ class NumberingPolicy:
+   # @else
+   #
+   # @endif
+-  class ObjectNotFound:
++  class ObjectNotFound(BaseException):
+     pass
+ 
+ 
+diff --git a/OpenRTM_aist/SdoServiceAdmin.py b/OpenRTM_aist/SdoServiceAdmin.py
+index 3a686e0..1e01451 100644
+--- a/OpenRTM_aist/SdoServiceAdmin.py
++++ b/OpenRTM_aist/SdoServiceAdmin.py
+@@ -216,7 +216,7 @@ class SdoServiceAdmin:
+   # Virtual destractor.
+   # @endif
+   def __del__(self):
+-    len_ = len(self._proiders)
++    len_ = len(self._providers)
+     for i in range(len_):
+       idx = (len_ - 1) - i
+       self._providers[idx].finalize()
+diff --git a/OpenRTM_aist/StateMachine.py b/OpenRTM_aist/StateMachine.py
+index 4b1f65a..18cea97 100644
+--- a/OpenRTM_aist/StateMachine.py
++++ b/OpenRTM_aist/StateMachine.py
+@@ -357,7 +357,7 @@ class StateMachine:
+     self._states = StateHolder()
+     self._states.curr = states.curr
+     self._states.prev = states.prev
+-    self._states.next = states.__next__
++    self._states.next = states.next
+ 
+ 
+   ##
+@@ -457,7 +457,7 @@ class StateMachine:
+     self.sync(states)
+ 
+     # If no state transition required, execute set of do-actions
+-    if states.curr == states.__next__:
++    if states.curr == states.next:
+       # pre-do
+       if self._predo[states.curr]:
+         self._predo[states.curr](states)
+@@ -480,8 +480,8 @@ class StateMachine:
+       self.sync(states)
+ 
+       # If state transition still required, move to the next state
+-      if states.curr != states.__next__:
+-        states.curr = states.__next__
++      if states.curr != states.next:
++        states.curr = states.next
+         if self._entry[states.curr]:
+           self._entry[states.curr](states)
+         self.update_curr(states.curr)
+@@ -521,7 +521,7 @@ class StateMachine:
+     guard = OpenRTM_aist.ScopedLock(self._mutex)
+     states.prev = self._states.prev
+     states.curr = self._states.curr
+-    states.next = self._states.__next__
++    states.next = self._states.next
+     
+ 
+ 
+@@ -537,7 +537,7 @@ class StateMachine:
+   # @endif
+   def need_trans(self):
+     guard = OpenRTM_aist.ScopedLock(self._mutex)
+-    return (self._states.curr != self._states.__next__)
++    return (self._states.curr != self._states.next)
+ 
+ 
+   ##
+diff --git a/OpenRTM_aist/test/test_StateMachine.py b/OpenRTM_aist/test/test_StateMachine.py
+index 96ee9f2..fede375 100755
+--- a/OpenRTM_aist/test/test_StateMachine.py
++++ b/OpenRTM_aist/test/test_StateMachine.py
+@@ -99,7 +99,7 @@ class TestStateMachine(unittest.TestCase):
+   def test_getStates(self):
+     self.assertEqual(self._sm.getStates().curr, RTC.INACTIVE_STATE)
+     self.assertEqual(self._sm.getStates().prev, RTC.INACTIVE_STATE)
+-    self.assertEqual(self._sm.getStates().__next__, RTC.INACTIVE_STATE)
++    self.assertEqual(self._sm.getStates().next, RTC.INACTIVE_STATE)
+ 
+     st = StateHolder()
+     st.prev = RTC.ERROR_STATE
+@@ -109,7 +109,7 @@ class TestStateMachine(unittest.TestCase):
+ 
+     self.assertEqual(self._sm.getStates().curr, RTC.ERROR_STATE)
+     self.assertEqual(self._sm.getStates().prev, RTC.ERROR_STATE)
+-    self.assertEqual(self._sm.getStates().__next__, RTC.ERROR_STATE)
++    self.assertEqual(self._sm.getStates().next, RTC.ERROR_STATE)
+     
+   def test_getState(self):
+     self.assertEqual(self._sm.getState(), RTC.INACTIVE_STATE)
+diff --git a/OpenRTM_aist/uuid.py b/OpenRTM_aist/uuid.py
+index 3ee2823..6692cfa 100644
+--- a/OpenRTM_aist/uuid.py
++++ b/OpenRTM_aist/uuid.py
+@@ -68,7 +68,7 @@ class UUID(object):
+         if bytes:
+             if len(bytes) != 16:
+                 raise ValueError('bytes is not a 16-char string')
+-            int_value = int(('%02x'*16) % tuple(map(ord, bytes)), 16)
++            int_value = int(('%02x'*16) % tuple(bytes), 16)
+         if fields:
+             if len(fields) != 6:
+                 raise ValueError('fields is not a 6-tuple')
+-- 
+2.25.1
+
