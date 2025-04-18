@@ -68,7 +68,7 @@ class UUID(object):
         if bytes:
             if len(bytes) != 16:
                 raise ValueError('bytes is not a 16-char string')
-            int_value = int(('%02x'*16) % tuple(map(ord, bytes)), 16)
+            int_value = int(('%02x'*16) % tuple(bytes), 16)
         if fields:
             if len(fields) != 6:
                 raise ValueError('fields is not a 6-tuple')
