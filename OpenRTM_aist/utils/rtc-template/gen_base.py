@@ -36,8 +36,8 @@
 import os
 import re
 import time
-import ezt
-import StringIO
+from . import ezt
+import io
 
 class gen_base:
 	
@@ -47,7 +47,7 @@ class gen_base:
 		"""
 		msg = " already exists. Overwrite or merge? (y/n/m)"
 		if (os.access(fname, os.F_OK)):
-			ans = raw_input("\"" + fname + "\"" + msg)
+			ans = input("\"" + fname + "\"" + msg)
 			if (ans == "y" or ans == "Y"):
 				return file(fname, "w"), None
 			elif (ans == "m" or ans == "M"):
@@ -81,7 +81,7 @@ class gen_base:
 			m = re.search("</rtc-template>", l)
 			if m:
 				in_tag = False
-				if data.has_key(tag_name):
+				if tag_name in data:
 					ret_lines += data[tag_name] + "\n"
 				ret_lines += l + "\n"
 				tag_name = ""
@@ -94,8 +94,8 @@ class gen_base:
 
 
 	def gen_tags(self, tags):
-		for key in tags.keys():
-			s = StringIO.StringIO()
+		for key in list(tags.keys()):
+			s = io.StringIO()
 			t = ezt.Template(compress_whitespace = 0)
 			t.parse(tags[key])
 			t.generate(s, self.data)
@@ -108,7 +108,7 @@ class gen_base:
 			return
 
 		if not lines:  # overwrite: Yes
-			s = StringIO.StringIO()
+			s = io.StringIO()
 			t = ezt.Template(compress_whitespace = 0)
 			t.parse(temp_txt)
 			t.generate(s, data)
@@ -120,7 +120,7 @@ class gen_base:
 		gen_txt = self.replace_tags(taged_txt, tags)
 		f.write(gen_txt)
 		f.close()
-		print "  File \"" + fname + "\"" " was generated."
+		print("  File \"" + fname + "\"" " was generated.")
 		return
 		
 
@@ -137,4 +137,4 @@ if __name__ == "__main__":
 	data = {"inport_declar": "  hoge;\n  dara;\n  munya;",
 			"outport_declar": "  1;\n  2;\n  3;"}
 	g = gen_base()
-	print g.replace_tags(hoge.splitlines(), data)
+	print(g.replace_tags(hoge.splitlines(), data))

@@ -10,10 +10,10 @@
 import re
 import os
 import time
-import StringIO
-import ezt
-import gen_base
-import uuid
+import io
+from . import ezt
+from . import gen_base
+from . import uuid
 
 def description():
 	return "VC++ project-file generator"

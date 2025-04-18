@@ -8,10 +8,10 @@
 ## コンポーネント接続テスト
 ##
 
-from rtc_handle10_11 import *
+from .rtc_handle10_11 import *
 from BasicDataType_idl import *
 import time
-import commands
+import subprocess
 import SDOPackage
 import os
 import sys
@@ -26,7 +26,7 @@ g_test_name = "<< component connection test >>"
 #ns = env.name_space['localhost:2809']
 env = RtmEnv(sys.argv, ["localhost:2809"])
 list0 = env.name_space["localhost:2809"].list_obj()
-env.name_space['localhost:2809'].rtc_handles.keys()
+list(env.name_space['localhost:2809'].rtc_handles.keys())
 ns = env.name_space['localhost:2809']
 
 g_compo_send = ns.rtc_handles["AutoTestOut0.rtc"]
@@ -162,12 +162,12 @@ def diff_file():
     ## else:
     ## 送信ファイル有無判定
     if os.path.isfile(g_diff_send_file) == False:
-        print "send_file (%s) not found." % send_file
+        print("send_file (%s) not found." % send_file)
         return False
 
     ## 受信ファイル有無判定
     if os.path.isfile(g_diff_recv_file) == False:
-        print "recv_file (%s) not found." % recv_file
+        print("recv_file (%s) not found." % recv_file)
         return False
 
     ## 送受信データ差分判定
@@ -244,7 +244,7 @@ message = message + "Connect(out->in, flush) -> Disconnect"
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -272,7 +272,7 @@ for i in range(loop_count):
     fout = open(g_test_result_file, 'a')
     message = g_mess_header + g_test_case + str(case_no) + " " + g_test_cnt + str(i+1) + g_mess_footer
     message = message + g_test_ok
-    print message
+    print(message)
     fout.write(message + '\n')
     fout.close()
 
@@ -288,7 +288,7 @@ message = message + "Connect(in->out, flush) -> Disconnect"
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -316,7 +316,7 @@ for i in range(loop_count):
     fout = open(g_test_result_file, 'a')
     message = g_mess_header + g_test_case + str(case_no) + " " + g_test_cnt + str(i+1) + g_mess_footer
     message = message + g_test_ok
-    print message
+    print(message)
     fout.write(message + '\n')
     fout.close()
 
@@ -332,7 +332,7 @@ message = message + "Connecting(out->in, flush), Activate -> send/recv -> Deacti
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 ## 1 コネクタープロファイル設定
 make_connecter_profile("flush", "", 0)
@@ -370,7 +370,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -385,12 +385,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -420,7 +420,7 @@ message = message + "Connecting(in->out, flush), Activate -> send/recv -> Deacti
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 ## 1 コネクタープロファイル設定
 make_connecter_profile("flush", "", 1)
@@ -458,7 +458,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -473,12 +473,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -508,7 +508,7 @@ message = message + "Not Connect(out->in, flush), Activate -> Deactivate"
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -530,7 +530,7 @@ for i in range(loop_count):
     fout = open(g_test_result_file, 'a')
     message = g_mess_header + g_test_case + str(case_no) + " " + g_test_cnt + str(i+1) + g_mess_footer
     message = message + g_test_ok
-    print message
+    print(message)
     fout.write(message + '\n')
     fout.close()
 
@@ -546,7 +546,7 @@ message = message + "Connect(out->in, flush) -> Activate -> send/recv -> Deactiv
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -589,7 +589,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -604,12 +604,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -634,7 +634,7 @@ message = message + "Connect(in->out, flush) -> Activate -> send/recv -> Deactiv
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -677,7 +677,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -692,12 +692,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -722,7 +722,7 @@ message = message + "Connect(out->in, flush) -> Activate -> send/recv -> Disconn
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -765,7 +765,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -780,12 +780,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -810,7 +810,7 @@ message = message + "Connect(in->out, flush) -> Activate -> send/recv -> Disconn
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -853,7 +853,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -868,12 +868,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -900,7 +900,7 @@ message = message + "Activate -> Connect(out->in, flush) -> send/recv -> Deactiv
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -943,7 +943,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -958,12 +958,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -989,7 +989,7 @@ message = message + "Activate -> Connect(in->out, flush) -> send/recv -> Deactiv
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -1032,7 +1032,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -1047,12 +1047,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -1078,7 +1078,7 @@ message = message + "Activate -> Connect(out->in, flush) -> send/recv -> Disconn
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -1121,7 +1121,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -1136,12 +1136,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -1167,7 +1167,7 @@ message = message + "Activate -> Connect(in->out, flush) -> send/recv -> Disconn
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -1210,7 +1210,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -1225,12 +1225,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -1256,7 +1256,7 @@ message = message + "Connect(out->in, new,ALL) -> Disconnect"
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -1284,7 +1284,7 @@ for i in range(loop_count):
     fout = open(g_test_result_file, 'a')
     message = g_mess_header + g_test_case + str(case_no) + " " + g_test_cnt + str(i+1) + g_mess_footer
     message = message + g_test_ok
-    print message
+    print(message)
     fout.write(message + '\n')
     fout.close()
 
@@ -1300,7 +1300,7 @@ message = message + "Connect(out->in, new,FIFO) -> Disconnect"
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -1328,7 +1328,7 @@ for i in range(loop_count):
     fout = open(g_test_result_file, 'a')
     message = g_mess_header + g_test_case + str(case_no) + " " + g_test_cnt + str(i+1) + g_mess_footer
     message = message + g_test_ok
-    print message
+    print(message)
     fout.write(message + '\n')
     fout.close()
 
@@ -1344,7 +1344,7 @@ message = message + "Connect(out->in, new,NEW) -> Disconnect"
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -1372,7 +1372,7 @@ for i in range(loop_count):
     fout = open(g_test_result_file, 'a')
     message = g_mess_header + g_test_case + str(case_no) + " " + g_test_cnt + str(i+1) + g_mess_footer
     message = message + g_test_ok
-    print message
+    print(message)
     fout.write(message + '\n')
     fout.close()
 
@@ -1388,7 +1388,7 @@ message = message + "Connect(out->in, new,SKIP) -> Disconnect"
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -1416,7 +1416,7 @@ for i in range(loop_count):
     fout = open(g_test_result_file, 'a')
     message = g_mess_header + g_test_case + str(case_no) + " " + g_test_cnt + str(i+1) + g_mess_footer
     message = message + g_test_ok
-    print message
+    print(message)
     fout.write(message + '\n')
     fout.close()
 
@@ -1432,7 +1432,7 @@ message = message + "Connect(in->out, new,ALL) -> Disconnect"
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -1460,7 +1460,7 @@ for i in range(loop_count):
     fout = open(g_test_result_file, 'a')
     message = g_mess_header + g_test_case + str(case_no) + " " + g_test_cnt + str(i+1) + g_mess_footer
     message = message + g_test_ok
-    print message
+    print(message)
     fout.write(message + '\n')
     fout.close()
 
@@ -1476,7 +1476,7 @@ message = message + "Connect(in->out, new,FIFO) -> Disconnect"
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -1504,7 +1504,7 @@ for i in range(loop_count):
     fout = open(g_test_result_file, 'a')
     message = g_mess_header + g_test_case + str(case_no) + " " + g_test_cnt + str(i+1) + g_mess_footer
     message = message + g_test_ok
-    print message
+    print(message)
     fout.write(message + '\n')
     fout.close()
 
@@ -1520,7 +1520,7 @@ message = message + "Connect(in->out, new,NEW) -> Disconnect"
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -1548,7 +1548,7 @@ for i in range(loop_count):
     fout = open(g_test_result_file, 'a')
     message = g_mess_header + g_test_case + str(case_no) + " " + g_test_cnt + str(i+1) + g_mess_footer
     message = message + g_test_ok
-    print message
+    print(message)
     fout.write(message + '\n')
     fout.close()
 
@@ -1564,7 +1564,7 @@ message = message + "Connect(in->out, new,SKIP) -> Disconnect"
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -1592,7 +1592,7 @@ for i in range(loop_count):
     fout = open(g_test_result_file, 'a')
     message = g_mess_header + g_test_case + str(case_no) + " " + g_test_cnt + str(i+1) + g_mess_footer
     message = message + g_test_ok
-    print message
+    print(message)
     fout.write(message + '\n')
     fout.close()
 
@@ -1608,7 +1608,7 @@ message = message + "Connecting(out->in, new,ALL), Activate -> send/recv -> Deac
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 ## 1 コネクタープロファイル設定
 make_connecter_profile("new", "ALL", 0)
@@ -1646,7 +1646,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -1661,12 +1661,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -1696,7 +1696,7 @@ message = message + "Connecting(out->in, new,FIFO), Activate -> send/recv -> Dea
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 ## 1 コネクタープロファイル設定
 make_connecter_profile("new", "FIFO", 0)
@@ -1734,7 +1734,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -1749,12 +1749,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -1784,7 +1784,7 @@ message = message + "Connecting(out->in, new,NEW), Activate -> send/recv -> Deac
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 ## 1 コネクタープロファイル設定
 make_connecter_profile("new", "NEW", 0)
@@ -1822,7 +1822,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -1837,12 +1837,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -1872,7 +1872,7 @@ message = message + "Connecting(out->in, new,SKIP), Activate -> send/recv -> Dea
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 ## 1 コネクタープロファイル設定
 make_connecter_profile("new", "SKIP", 0)
@@ -1910,7 +1910,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -1925,12 +1925,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -1960,7 +1960,7 @@ message = message + "Connecting(in->out, new,ALL), Activate -> send/recv -> Deac
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 ## 1 コネクタープロファイル設定
 make_connecter_profile("new", "ALL", 1)
@@ -1998,7 +1998,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -2013,12 +2013,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -2048,7 +2048,7 @@ message = message + "Connecting(in->out, new,FIFO), Activate -> send/recv -> Dea
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 ## 1 コネクタープロファイル設定
 make_connecter_profile("new", "FIFO", 1)
@@ -2086,7 +2086,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -2101,12 +2101,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -2136,7 +2136,7 @@ message = message + "Connecting(in->out, new,NEW), Activate -> send/recv -> Deac
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 ## 1 コネクタープロファイル設定
 make_connecter_profile("new", "NEW", 1)
@@ -2174,7 +2174,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -2189,12 +2189,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -2224,7 +2224,7 @@ message = message + "Connecting(in->out, new,SKIP), Activate -> send/recv -> Dea
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 ## 1 コネクタープロファイル設定
 make_connecter_profile("new", "SKIP", 1)
@@ -2262,7 +2262,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -2277,12 +2277,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -2312,7 +2312,7 @@ message = message + "Connect(out->in, new,ALL) -> Activate -> send/recv -> Deact
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -2355,7 +2355,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -2370,12 +2370,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -2400,7 +2400,7 @@ message = message + "Connect(out->in, new,FIFO) -> Activate -> send/recv -> Deac
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -2443,7 +2443,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -2458,12 +2458,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -2488,7 +2488,7 @@ message = message + "Connect(out->in, new,NEW) -> Activate -> send/recv -> Deact
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -2531,7 +2531,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -2546,12 +2546,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -2576,7 +2576,7 @@ message = message + "Connect(out->in, new,SKIP) -> Activate -> send/recv -> Deac
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -2619,7 +2619,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -2634,12 +2634,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -2664,7 +2664,7 @@ message = message + "Connect(in->out, new,ALL) -> Activate -> send/recv -> Deact
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -2707,7 +2707,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -2722,12 +2722,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -2752,7 +2752,7 @@ message = message + "Connect(in->out, new,FIFO) -> Activate -> send/recv -> Deac
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -2795,7 +2795,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -2810,12 +2810,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -2840,7 +2840,7 @@ message = message + "Connect(in->out, new,NEW) -> Activate -> send/recv -> Deact
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -2883,7 +2883,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -2898,12 +2898,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -2928,7 +2928,7 @@ message = message + "Connect(in->out, new,SKIP) -> Activate -> send/recv -> Deac
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -2971,7 +2971,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -2986,12 +2986,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -3017,7 +3017,7 @@ message = message + "Connect(out->in, periodic,ALL) -> Disconnect"
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -3045,7 +3045,7 @@ for i in range(loop_count):
     fout = open(g_test_result_file, 'a')
     message = g_mess_header + g_test_case + str(case_no) + " " + g_test_cnt + str(i+1) + g_mess_footer
     message = message + g_test_ok
-    print message
+    print(message)
     fout.write(message + '\n')
     fout.close()
 
@@ -3061,7 +3061,7 @@ message = message + "Connect(out->in, periodic,FIFO) -> Disconnect"
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -3089,7 +3089,7 @@ for i in range(loop_count):
     fout = open(g_test_result_file, 'a')
     message = g_mess_header + g_test_case + str(case_no) + " " + g_test_cnt + str(i+1) + g_mess_footer
     message = message + g_test_ok
-    print message
+    print(message)
     fout.write(message + '\n')
     fout.close()
 
@@ -3105,7 +3105,7 @@ message = message + "Connect(out->in, periodic,NEW) -> Disconnect"
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -3133,7 +3133,7 @@ for i in range(loop_count):
     fout = open(g_test_result_file, 'a')
     message = g_mess_header + g_test_case + str(case_no) + " " + g_test_cnt + str(i+1) + g_mess_footer
     message = message + g_test_ok
-    print message
+    print(message)
     fout.write(message + '\n')
     fout.close()
 
@@ -3149,7 +3149,7 @@ message = message + "Connect(out->in, periodic,SKIP) -> Disconnect"
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -3177,7 +3177,7 @@ for i in range(loop_count):
     fout = open(g_test_result_file, 'a')
     message = g_mess_header + g_test_case + str(case_no) + " " + g_test_cnt + str(i+1) + g_mess_footer
     message = message + g_test_ok
-    print message
+    print(message)
     fout.write(message + '\n')
     fout.close()
 
@@ -3193,7 +3193,7 @@ message = message + "Connect(in->out, periodic,ALL) -> Disconnect"
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -3221,7 +3221,7 @@ for i in range(loop_count):
     fout = open(g_test_result_file, 'a')
     message = g_mess_header + g_test_case + str(case_no) + " " + g_test_cnt + str(i+1) + g_mess_footer
     message = message + g_test_ok
-    print message
+    print(message)
     fout.write(message + '\n')
     fout.close()
 
@@ -3237,7 +3237,7 @@ message = message + "Connect(in->out, periodic,FIFO) -> Disconnect"
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -3265,7 +3265,7 @@ for i in range(loop_count):
     fout = open(g_test_result_file, 'a')
     message = g_mess_header + g_test_case + str(case_no) + " " + g_test_cnt + str(i+1) + g_mess_footer
     message = message + g_test_ok
-    print message
+    print(message)
     fout.write(message + '\n')
     fout.close()
 
@@ -3281,7 +3281,7 @@ message = message + "Connect(in->out, periodic,NEW) -> Disconnect"
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -3309,7 +3309,7 @@ for i in range(loop_count):
     fout = open(g_test_result_file, 'a')
     message = g_mess_header + g_test_case + str(case_no) + " " + g_test_cnt + str(i+1) + g_mess_footer
     message = message + g_test_ok
-    print message
+    print(message)
     fout.write(message + '\n')
     fout.close()
 
@@ -3325,7 +3325,7 @@ message = message + "Connect(in->out, periodic,SKIP) -> Disconnect"
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -3353,7 +3353,7 @@ for i in range(loop_count):
     fout = open(g_test_result_file, 'a')
     message = g_mess_header + g_test_case + str(case_no) + " " + g_test_cnt + str(i+1) + g_mess_footer
     message = message + g_test_ok
-    print message
+    print(message)
     fout.write(message + '\n')
     fout.close()
 
@@ -3369,7 +3369,7 @@ message = message + "Connecting(out->in, periodic,ALL), Activate -> send/recv ->
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 ## 1 コネクタープロファイル設定
 make_connecter_profile("periodic", "ALL", 0)
@@ -3407,7 +3407,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -3422,12 +3422,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -3457,7 +3457,7 @@ message = message + "Connecting(out->in, periodic,FIFO), Activate -> send/recv -
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 ## 1 コネクタープロファイル設定
 make_connecter_profile("periodic", "FIFO", 0)
@@ -3495,7 +3495,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -3510,12 +3510,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -3545,7 +3545,7 @@ message = message + "Connecting(out->in, periodic,NEW), Activate -> send/recv ->
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 ## 1 コネクタープロファイル設定
 make_connecter_profile("periodic", "NEW", 0)
@@ -3583,7 +3583,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -3598,12 +3598,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -3633,7 +3633,7 @@ message = message + "Connecting(out->in, periodic,SKIP), Activate -> send/recv -
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 ## 1 コネクタープロファイル設定
 make_connecter_profile("periodic", "SKIP", 0)
@@ -3671,7 +3671,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -3686,12 +3686,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -3721,7 +3721,7 @@ message = message + "Connecting(in->out, periodic,ALL), Activate -> send/recv ->
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 ## 1 コネクタープロファイル設定
 make_connecter_profile("periodic", "ALL", 1)
@@ -3759,7 +3759,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -3774,12 +3774,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -3809,7 +3809,7 @@ message = message + "Connecting(in->out, periodic,FIFO), Activate -> send/recv -
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 ## 1 コネクタープロファイル設定
 make_connecter_profile("periodic", "FIFO", 1)
@@ -3847,7 +3847,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -3862,12 +3862,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -3897,7 +3897,7 @@ message = message + "Connecting(in->out, periodic,NEW), Activate -> send/recv ->
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 ## 1 コネクタープロファイル設定
 make_connecter_profile("periodic", "NEW", 1)
@@ -3935,7 +3935,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -3950,12 +3950,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -3985,7 +3985,7 @@ message = message + "Connecting(in->out, periodic,SKIP), Activate -> send/recv -
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 ## 1 コネクタープロファイル設定
 make_connecter_profile("periodic", "SKIP", 1)
@@ -4023,7 +4023,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -4038,12 +4038,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -4073,7 +4073,7 @@ message = message + "Connect(out->in, periodic,ALL) -> Activate -> send/recv -> 
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -4116,7 +4116,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -4131,12 +4131,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -4161,7 +4161,7 @@ message = message + "Connect(out->in, periodic,FIFO) -> Activate -> send/recv ->
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -4204,7 +4204,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -4219,12 +4219,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -4249,7 +4249,7 @@ message = message + "Connect(out->in, periodic,NEW) -> Activate -> send/recv -> 
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -4292,7 +4292,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -4307,12 +4307,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -4337,7 +4337,7 @@ message = message + "Connect(out->in, periodic,SKIP) -> Activate -> send/recv ->
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -4380,7 +4380,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -4395,12 +4395,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -4425,7 +4425,7 @@ message = message + "Connect(in->out, periodic,ALL) -> Activate -> send/recv -> 
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -4468,7 +4468,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -4483,12 +4483,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -4513,7 +4513,7 @@ message = message + "Connect(in->out, periodic,FIFO) -> Activate -> send/recv ->
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -4556,7 +4556,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -4571,12 +4571,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -4601,7 +4601,7 @@ message = message + "Connect(in->out, periodic,NEW) -> Activate -> send/recv -> 
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -4644,7 +4644,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -4659,12 +4659,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -4689,7 +4689,7 @@ message = message + "Connect(in->out, periodic,SKIP) -> Activate -> send/recv ->
 message = message + g_mess_footer
 fout.write(message + '\n')
 fout.close()
-print message
+print(message)
 
 for i in range(loop_count):
 
@@ -4732,7 +4732,7 @@ for i in range(loop_count):
         message = message + g_check_message
         fout.write(message + '\n')
         fout.close()
-        print message
+        print(message)
         time.sleep(sleep_for_time)
         continue
 
@@ -4747,12 +4747,12 @@ for i in range(loop_count):
     if bret == True:
         # テスト結果 OK
         message = message + g_test_ok
-        print message
+        print(message)
         fout.write(message + '\n')
     else:
         # テスト結果 NG
         message = message + g_test_ng
-        print message
+        print(message)
         message = message + g_test_ng_message
         fout.write(message + '\n')
         # 受信データをテスト結果ファイルへコピー
@@ -4767,4 +4767,4 @@ for i in range(loop_count):
 
     time.sleep(sleep_for_time)
 
-print "Test Complete."
+print("Test Complete.")

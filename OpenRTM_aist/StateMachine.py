@@ -222,7 +222,7 @@ class StateMachine:
   # @brief Set Entry action function
   # @endif
   def setEntryAction(self, state, call_back):
-    if self._entry.has_key(state):
+    if state in self._entry:
       self._entry[state] = call_back
     else:
       self._entry.setdefault(state, call_back)
@@ -245,7 +245,7 @@ class StateMachine:
   # @brief Set PreDo action function
   # @endif
   def setPreDoAction(self, state, call_back):
-    if self._predo.has_key(state):
+    if state in self._predo:
       self._predo[state] = call_back
     else:
       self._predo.setdefault(state, call_back)
@@ -268,7 +268,7 @@ class StateMachine:
   # @brief Set Do action function
   # @endif
   def setDoAction(self, state, call_back):
-    if self._do.has_key(state):
+    if state in self._do:
       self._do[state] = call_back
     else:
       self._do.setdefault(state, call_back)
@@ -291,7 +291,7 @@ class StateMachine:
   # @brief Set PostDo action function
   # @endif
   def setPostDoAction(self, state, call_back):
-    if self._postdo.has_key(state):
+    if state in self._postdo:
       self._postdo[state] = call_back
     else:
       self._postdo.setdefault(state, call_back)
@@ -314,7 +314,7 @@ class StateMachine:
   # @brief Set Exit action function
   # @endif
   def setExitAction(self, state, call_back):
-    if self._exit.has_key(state):
+    if state in self._exit:
       self._exit[state] = call_back
     else:
       self._exit.setdefault(state, call_back)
@@ -357,7 +357,7 @@ class StateMachine:
     self._states = StateHolder()
     self._states.curr = states.curr
     self._states.prev = states.prev
-    self._states.next = states.next
+    self._states.next = states.__next__
 
 
   ##
@@ -457,7 +457,7 @@ class StateMachine:
     self.sync(states)
 
     # If no state transition required, execute set of do-actions
-    if states.curr == states.next:
+    if states.curr == states.__next__:
       # pre-do
       if self._predo[states.curr]:
         self._predo[states.curr](states)
@@ -480,8 +480,8 @@ class StateMachine:
       self.sync(states)
 
       # If state transition still required, move to the next state
-      if states.curr != states.next:
-        states.curr = states.next
+      if states.curr != states.__next__:
+        states.curr = states.__next__
         if self._entry[states.curr]:
           self._entry[states.curr](states)
         self.update_curr(states.curr)
@@ -502,7 +502,7 @@ class StateMachine:
   # @endif
   def setNullFunc(self, s, nullfunc):
     for i in range(self._num):
-      if s.has_key(StateMachine.state_array[i]):
+      if StateMachine.state_array[i] in s:
         s[StateMachine.state_array[i]] = nullfunc
       else:
         s.setdefault(StateMachine.state_array[i], nullfunc)
@@ -521,7 +521,7 @@ class StateMachine:
     guard = OpenRTM_aist.ScopedLock(self._mutex)
     states.prev = self._states.prev
     states.curr = self._states.curr
-    states.next = self._states.next
+    states.next = self._states.__next__
     
 
 
@@ -537,7 +537,7 @@ class StateMachine:
   # @endif
   def need_trans(self):
     guard = OpenRTM_aist.ScopedLock(self._mutex)
-    return (self._states.curr != self._states.next)
+    return (self._states.curr != self._states.__next__)
 
 
   ##
