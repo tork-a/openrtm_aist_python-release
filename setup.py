@@ -3,7 +3,7 @@
 import os,os.path
 import sys
 import string
-import commands
+import subprocess
 import glob
 from distutils import core
 from distutils import cmd
@@ -33,7 +33,7 @@ if os.sep == '/':
 elif os.sep == ':':
   example_sitedir = os.path.join("lib", "site-packages")
 elif os.sep == '\\':
-  print "os: win32"
+  print("os: win32")
   g_os = "win32"
   example_sitedir = os.path.join("lib", "site-packages")
 else:
@@ -53,7 +53,7 @@ def compile_idl(cmd, pars, files):
     return
 
   log.info(cmdline)
-  status, output = commands.getstatusoutput(cmdline)
+  status, output = subprocess.getstatusoutput(cmdline)
   log.info(output)
   if status != 0:
     raise errors.DistutilsExecError("Return status of %s is %d" %
@@ -394,8 +394,8 @@ for ex in example_dir:
         example_data_files.append((os.path.join(example_sitedir, ex), [ip_]))
 
   elif isinstance(ex, dict):
-    vals_ = ex.values()
-    key_  = ex.keys()[0]
+    vals_ = list(ex.values())
+    key_  = list(ex.keys())[0]
     if isinstance(vals_, list):
       if isinstance(vals_[0], list):
         for val_ in vals_[0]:
@@ -640,5 +640,5 @@ try:
                data_files       = win32_data_files)
 #               script_args      = ["sdist", "--format=zip"])
 
-except Exception, e:
+except Exception as e:
   log.error("Error: %s", e)

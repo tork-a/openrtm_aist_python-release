@@ -12,7 +12,7 @@ import OpenRTM_aist
 
 
 # import NXTBrick class
-import NXTBrick
+from . import NXTBrick
 
 
 # This module's spesification
@@ -80,11 +80,11 @@ class NXTRTC(OpenRTM_aist.DataFlowComponentBase):
 
     # create NXTBrick object
     try:
-      print "Connecting to NXT brick ...."
+      print("Connecting to NXT brick ....")
       self._nxtbrick = NXTBrick.NXTBrick()
-      print "Connection established."
+      print("Connection established.")
     except:
-      print "NXTBrick connection failed."
+      print("NXTBrick connection failed.")
       return RTC.RTC_ERROR
 
     # set callback class

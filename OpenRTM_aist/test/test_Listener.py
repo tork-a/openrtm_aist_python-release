@@ -25,7 +25,7 @@ import OpenRTM_aist
 
 class test:
   def func(self):
-    print "test func"
+    print("test func")
 
 
 class TestListener(unittest.TestCase):

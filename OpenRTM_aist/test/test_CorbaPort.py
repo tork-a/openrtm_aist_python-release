@@ -36,7 +36,7 @@ class MyService_impl(_GlobalIDL__POA.MyService):
     pass
 
   def echo(self, msg):
-    print msg
+    print(msg)
     return msg
 
   

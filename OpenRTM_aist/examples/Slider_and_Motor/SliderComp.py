@@ -9,7 +9,7 @@ sys.path.append(".")
 import RTC
 import OpenRTM_aist
 
-import slider
+from . import slider
 
 
 channels = (
@@ -49,7 +49,7 @@ class SliderComp(OpenRTM_aist.DataFlowComponentBase):
     return RTC.RTC_OK
 
   def onActivated(self, ec_id):
-    print sl.get()
+    print(sl.get())
     time.sleep(1)
     return RTC.RTC_OK
 
@@ -79,7 +79,7 @@ def MyModuleInit(manager):
   # Create a component
   comp = manager.createComponent("SliderComp")
 
-  print "Componet created"
+  print("Componet created")
 
 
 def main():

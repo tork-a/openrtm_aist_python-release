@@ -32,11 +32,11 @@ import OpenRTM_aist
 
 class ConsumerMock:
 	def subscribeInterface(self, prop):
-		print "subscribeInterface"
+		print("subscribeInterface")
 		return
 
 	def unsubscribeInterface(self, prop):
-		print "unsubscribeInterface"
+		print("unsubscribeInterface")
 		return
 
 
