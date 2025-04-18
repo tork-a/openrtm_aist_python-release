@@ -47,7 +47,7 @@ def compile_idl(cmd, pars, files):
   Put together command line for python stubs generation.
   """
   global g_os
-  cmdline = cmd +' '+ " ".join(pars) +' '+" ".join(files)
+  cmdline = cmd +' '+ string.join(pars) +' '+string.join(files)
   if g_os == "win32":
     os.system(cmdline)
     return

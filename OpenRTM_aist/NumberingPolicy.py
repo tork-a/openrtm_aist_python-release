@@ -46,7 +46,7 @@ class NumberingPolicy:
   # @else
   #
   # @endif
-  class ObjectNotFound:
+  class ObjectNotFound(BaseException):
     pass
 
 
