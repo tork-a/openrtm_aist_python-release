@@ -99,7 +99,7 @@ class TestStateMachine(unittest.TestCase):
   def test_getStates(self):
     self.assertEqual(self._sm.getStates().curr, RTC.INACTIVE_STATE)
     self.assertEqual(self._sm.getStates().prev, RTC.INACTIVE_STATE)
-    self.assertEqual(self._sm.getStates().__next__, RTC.INACTIVE_STATE)
+    self.assertEqual(self._sm.getStates().next, RTC.INACTIVE_STATE)
 
     st = StateHolder()
     st.prev = RTC.ERROR_STATE
@@ -109,7 +109,7 @@ class TestStateMachine(unittest.TestCase):
 
     self.assertEqual(self._sm.getStates().curr, RTC.ERROR_STATE)
     self.assertEqual(self._sm.getStates().prev, RTC.ERROR_STATE)
-    self.assertEqual(self._sm.getStates().__next__, RTC.ERROR_STATE)
+    self.assertEqual(self._sm.getStates().next, RTC.ERROR_STATE)
     
   def test_getState(self):
     self.assertEqual(self._sm.getState(), RTC.INACTIVE_STATE)

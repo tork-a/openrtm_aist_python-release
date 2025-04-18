@@ -357,7 +357,7 @@ class StateMachine:
     self._states = StateHolder()
     self._states.curr = states.curr
     self._states.prev = states.prev
-    self._states.next = states.__next__
+    self._states.next = states.next
 
 
   ##
@@ -457,7 +457,7 @@ class StateMachine:
     self.sync(states)
 
     # If no state transition required, execute set of do-actions
-    if states.curr == states.__next__:
+    if states.curr == states.next:
       # pre-do
       if self._predo[states.curr]:
         self._predo[states.curr](states)
@@ -480,8 +480,8 @@ class StateMachine:
       self.sync(states)
 
       # If state transition still required, move to the next state
-      if states.curr != states.__next__:
-        states.curr = states.__next__
+      if states.curr != states.next:
+        states.curr = states.next
         if self._entry[states.curr]:
           self._entry[states.curr](states)
         self.update_curr(states.curr)
@@ -521,7 +521,7 @@ class StateMachine:
     guard = OpenRTM_aist.ScopedLock(self._mutex)
     states.prev = self._states.prev
     states.curr = self._states.curr
-    states.next = self._states.__next__
+    states.next = self._states.next
     
 
 
@@ -537,7 +537,7 @@ class StateMachine:
   # @endif
   def need_trans(self):
     guard = OpenRTM_aist.ScopedLock(self._mutex)
-    return (self._states.curr != self._states.__next__)
+    return (self._states.curr != self._states.next)
 
 
   ##
