@@ -41,7 +41,7 @@ class TestTimeValue(unittest.TestCase):
 
   def test_toDouble(self):
     self.test_set_time()
-    print(self.tm.toDouble())
+    print  self.tm.toDouble()
 
   def test_sec_usec(self):
     tm = TimeValue(usec=1000000)
@@ -66,7 +66,7 @@ class TestTimeValue(unittest.TestCase):
 
   def test__str__(self):
     self.test_set_time()
-    print(self.tm)
+    print self.tm
   
 ############### test #################
 if __name__ == '__main__':

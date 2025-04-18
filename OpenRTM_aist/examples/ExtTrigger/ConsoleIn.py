@@ -33,9 +33,9 @@ class ConsoleIn(OpenRTM_aist.DataFlowComponentBase):
     return RTC.RTC_OK
 
   def onExecute(self, ec_id):
-    print("Please input number: ", end=' ')
-    self._data.data = int(sys.stdin.readline())
-    print("Sending to subscriber: ", self._data.data)
+    print "Please input number: ",
+    self._data.data = long(sys.stdin.readline())
+    print "Sending to subscriber: ", self._data.data
     self._outport.write()
     return RTC.RTC_OK
 

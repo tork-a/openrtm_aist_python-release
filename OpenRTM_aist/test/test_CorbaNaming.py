@@ -51,7 +51,7 @@ class TestCorbaNaming(unittest.TestCase):
     try:
       self.naming.init("localhost")
     except:
-      print("Exeption at naming init.")
+      print "Exeption at naming init."
 
 
   def test_bind(self):
@@ -164,7 +164,7 @@ class TestCorbaNaming(unittest.TestCase):
     bl = []
     bi = []
     self.naming.list(self.naming.getRootContext(), 100, bl, bi)
-    print(bl[0][0].binding_name[0].id)
+    print bl[0][0].binding_name[0].id
   
 
   def test_toString(self):
@@ -175,7 +175,7 @@ class TestCorbaNaming(unittest.TestCase):
 
     string_name = self.naming.toString(name)
     self.assertEqual(str("desRec0.desRec0_cxt/desRec1.desRec1_cxt/desRec2.desRec2_cxt/"),str(string_name))
-    print(".",string_name,".")
+    print ".",string_name,"."
 
 ############### test #################
 if __name__ == '__main__':

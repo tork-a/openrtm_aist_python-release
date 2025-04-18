@@ -16,7 +16,7 @@
 #     All rights reserved.
 #
 
-import _thread
+import thread
 
 ##
 # @if jp
@@ -29,7 +29,7 @@ import _thread
 #   def __init__(self):
 #     pass
 class Singleton(object):
-  __lockObj = _thread.allocate_lock()
+  __lockObj = thread.allocate_lock()
   __instance = None
 
   def __new__(self, *args, **kargs):

@@ -117,7 +117,7 @@ def usage_short():
   """
   Help message
   """
-  print("""
+  print """
 Usage: rtc-template [OPTIONS]
 
 Options:
@@ -143,12 +143,12 @@ Options:
     [--consumer-idl[=IDL_file]]           IDL file name for consumer
     [--idl-include=[path]]                Search path for IDL compile
 
-""")
+"""
 def usage_long():
   """
   Help message
   """
-  print("""
+  print """
     --output[=output_file]:
         Specify base name of output file. If 'XXX' is specified,
         C++ source codes XXX.cpp, XXX.h, XXXComp.cpp Makefile.XXX is generated.
@@ -253,7 +253,7 @@ Example:
     --consumer=YourSvcPort:yourservice0:YourService \\
     --service-idl=MyService.idl --consumer-idl=YourService.idl
 
-""")
+"""
   return
 
 def usage():
@@ -290,7 +290,7 @@ class ModuleProfile:
     if hasattr(self, member):
       setattr(self, member, value)
     else:
-      print("Invalid option: --module-" + member + " " + value)
+      print "Invalid option: --module-" + member + " " + value
     return
   
   def setName(self, name):
@@ -326,16 +326,16 @@ class ModuleProfile:
     return
 
   def printProfile(self):
-    print("----- Module Profile -----")
-    print("Name           ", self.name)
-    print("Description    ", self.desc)
-    print("Version        ", self.version)
-    print("Vendor         ", self.vendor)
-    print("Category       ", self.category)
-    print("Component Type ", self.comp_type)
-    print("Activity Type  ", self.act_type)
-    print("Max Instancese ", self.max_inst)
-    print("Language       ", self.lang)
+    print "----- Module Profile -----"
+    print "Name           ", self.name
+    print "Description    ", self.desc
+    print "Version        ", self.version
+    print "Vendor         ", self.vendor
+    print "Category       ", self.category
+    print "Component Type ", self.comp_type
+    print "Activity Type  ", self.act_type
+    print "Max Instancese ", self.max_inst
+    print "Language       ", self.lang
     return
     
     
@@ -545,7 +545,7 @@ class BackendLoader:
             be = Backend(mod_name, mod)
             self.backends[opt_name] = be
           except:
-            print("Invalid backend: ", f)
+            print "Invalid backend: ", f
             pass
 
     return self.backends
@@ -555,17 +555,17 @@ class BackendLoader:
     for opt in args:
       if opt.find('-b') == 0:
         backend_name = opt.replace("-b", "")
-        if backend_name in self.backends:
+        if self.backends.has_key(backend_name):
           self.opts.append(backend_name)
         else:
-          print("No such backend: ", backend_name)
+          print "No such backend: ", backend_name
           sys.exit(-1)
       elif opt.find('--backend=') == 0:
         backend_name = opt.replace("--backend=", "")
-        if backend_name in self.backends:
+        if self.backends.has_key(backend_name):
           self.opts.append(backend_name)
         else:
-          print("No such backend: ", backend_name)
+          print "No such backend: ", backend_name
           sys.exit(-1)
     return self.opts
 
@@ -578,28 +578,28 @@ class BackendLoader:
 
 
   def usage_available(self):
-    print("The following backends are available.")
+    print "The following backends are available."
     space = 10
     for key in self.backends:
       desc = self.backends[key].mod.description()     
-      print("    -b" + key + ("." * (space - len(key))) + desc)
-    print("""
+      print "    -b" + key + ("." * (space - len(key))) + desc
+    print """
 Backend [xxx] specific help can be available by the following options.
     -bxxx --help|-h or --backend=xxx --help|-h
-  """)
+  """
     return
 
 
   def usage(self):
     for be in self.opts:
-      print(self.backends[be].mod.usage())     
-      print("")
+      print self.backends[be].mod.usage()     
+      print ""
     return
 
   def usage_short(self):
     for be in self.opts:
-      print(self.backends[be].mod.usage_short())
-      print("")
+      print self.backends[be].mod.usage_short()
+      print ""
     return
 
 
@@ -635,7 +635,7 @@ def main():
   try:
     opts, args = getopt.getopt(sys.argv[1:], "b:ho:v", opt_args_fmt)
   except getopt.GetoptError:
-    print("Error: Invalid option.", getopt.GetoptError)
+    print "Error: Invalid option.", getopt.GetoptError
     usage_short()
     backends.usage_available()
     sys.exit(-1)
@@ -698,7 +698,7 @@ def main():
 
   backends.generate_code(data, opts)
 
-  from . import README_src
+  import README_src
   readme_src = README_src.README_src(data)
   readme_src.print_all()
   return

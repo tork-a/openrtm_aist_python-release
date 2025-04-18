@@ -407,7 +407,7 @@ def includes(_list, value, ignore_case = True):
   tmp_list = _list
   if ignore_case:
     value = value.lower()
-    tmp_list = list(map((lambda x: x.lower()),_list))
+    tmp_list = map((lambda x: x.lower()),_list)
     
   if tmp_list.count(value) > 0:
     return True
@@ -485,7 +485,7 @@ def isURL(str):
 # @brief Convert the given object to st::string.
 # @endif
 def otos(n):
-  if type(n) == int or type(n) == str or type(n) == int or type(n) == float:
+  if type(n) == int or type(n) == str or type(n) == long or type(n) == float:
     return str(n)
 
 
@@ -526,8 +526,8 @@ def _stringToList(_type, _str):
   for i in range(len(list_)):
     if type(_type[0][i]) == int:
       _type[0][i] = int(list_[i])
-    elif type(_type[0][i]) == int:
-      _type[0][i] = int(list_[i])
+    elif type(_type[0][i]) == long:
+      _type[0][i] = long(list_[i])
     elif type(_type[0][i]) == float:
       _type[0][i] = float(list_[i])
     elif type(_type[0][i]) == str:
@@ -559,8 +559,8 @@ def stringTo(_type, _str):
   if type(_type[0]) == int:
     _type[0] = int(_str)
     return True
-  elif type(_type[0]) == int:
-    _type[0] = int(_str)
+  elif type(_type[0]) == long:
+    _type[0] = long(_str)
     return True
   elif type(_type[0]) == float:
     _type[0] = float(_str)

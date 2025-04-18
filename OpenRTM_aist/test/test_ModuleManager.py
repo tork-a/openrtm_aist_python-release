@@ -73,7 +73,7 @@ class TestModuleManager(unittest.TestCase):
       # Failure Pattern
       #self.mm.load("sample")
     except:
-      print("exception.")
+      print "exception."
     return
     
 

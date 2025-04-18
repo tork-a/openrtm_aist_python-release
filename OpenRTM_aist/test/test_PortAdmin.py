@@ -41,11 +41,11 @@ class PortBase(OpenRTM_aist.PortBase):
     return RTC.RTC_OK
 
   def activateInterfaces(self):
-    print("activateInterfaces")
+    print "activateInterfaces"
 
 
   def deactivateInterfaces(self):
-    print("deactivateInterfaces")
+    print "deactivateInterfaces"
 
     
 class TestPortAdmin(unittest.TestCase):
