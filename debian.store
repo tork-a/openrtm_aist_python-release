@@ -1,1 +1,1 @@
-{"base": "740692e", "parent": "debian/noetic/openrtm_aist_python", "previous": "322428a", "trim": "", "trimbase": ""}
+{"trim": "", "base": "05fd5e2", "trimbase": "", "parent": "debian/noetic/openrtm_aist_python", "previous": "0f51f68"}
