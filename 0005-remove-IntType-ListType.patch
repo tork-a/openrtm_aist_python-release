@@ -1,4 +1,4 @@
-From 3290ed1574ccf49a782abc74a3960d6d463daee0 Mon Sep 17 00:00:00 2001
+From 142d8f2be41cc0a08fd037c07452e34fe33448e4 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Fri, 29 Sep 2023 17:07:29 +0900
 Subject: [PATCH 5/5] remove IntType, ListType
@@ -32,5 +32,5 @@ index 4178b75..08ef9da 100644
        argv = arg[1]
      else:
 -- 
-2.25.1
+2.17.1
 

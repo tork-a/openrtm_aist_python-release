@@ -1,4 +1,4 @@
-From a00739299f07f59a681ec85ff5a21057c085d68a Mon Sep 17 00:00:00 2001
+From e6bd51996d242c48fdf55f11bd984acdadfd8234 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Thu, 28 Sep 2023 17:44:01 +0900
 Subject: [PATCH 3/5] noetic support: 2to3 -w .
@@ -7979,5 +7979,5 @@ index 270b98d..db5d37d 100644
 +except Exception as e:
    log.error("Error: %s", e)
 -- 
-2.25.1
+2.17.1
 

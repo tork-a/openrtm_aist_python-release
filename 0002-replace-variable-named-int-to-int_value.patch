@@ -1,4 +1,4 @@
-From 924725cddc21d44cdb397a70ef18515874d84c6f Mon Sep 17 00:00:00 2001
+From f5e5ff243e3fabf63d88c4bc7c576f032e808ce1 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Thu, 28 Sep 2023 17:34:27 +0900
 Subject: [PATCH 2/5] replace variable named 'int' to 'int_value'
@@ -345,5 +345,5 @@ index 99f11fe..99c7cd4 100644
      version = property(get_version)
  
 -- 
-2.25.1
+2.17.1
 
