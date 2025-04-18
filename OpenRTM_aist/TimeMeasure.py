@@ -68,9 +68,9 @@ class Time:
   def __init__(self):
     global usec_per_sec
     tm = time.time()
-    tm_f       = float(tm - long(tm))     # 小数部の取り出し
-    self.sec   = long(tm - tm_f)   # 整数部の取り出し
-    self.usec  = long(float(tm_f) * float(usec_per_sec)) # sec -> usec (micro second)
+    tm_f       = float(tm - int(tm))     # 小数部の取り出し
+    self.sec   = int(tm - tm_f)   # 整数部の取り出し
+    self.usec  = int(float(tm_f) * float(usec_per_sec)) # sec -> usec (micro second)
     self._timevalue = OpenRTM_aist.TimeValue(self.sec,self.usec)
     return
 
@@ -114,9 +114,9 @@ class Time:
   def gettimeofday(self):
     global usec_per_sec
     tm = time.time()
-    tm_f       = float(tm - long(tm))     # 小数部の取り出し
-    self.sec   = long(float(tm) - float(tm_f))   # 整数部の取り出し
-    self.usec  = long(float(tm_f) * float(usec_per_sec)) # sec -> usec (micro second)
+    tm_f       = float(tm - int(tm))     # 小数部の取り出し
+    self.sec   = int(float(tm) - float(tm_f))   # 整数部の取り出し
+    self.usec  = int(float(tm_f) * float(usec_per_sec)) # sec -> usec (micro second)
     return OpenRTM_aist.TimeValue(self.sec, self.usec)
 
 

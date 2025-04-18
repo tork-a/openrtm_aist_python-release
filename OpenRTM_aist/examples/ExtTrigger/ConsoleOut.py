@@ -36,8 +36,8 @@ class ConsoleOut(OpenRTM_aist.DataFlowComponentBase):
   def onExecute(self, ec_id):
     if self._inport.isNew():
       data = self._inport.read()
-      print "Received: ", data.data
-      print "TimeStamp: ", data.tm.sec, "[s] ", data.tm.nsec, "[ns]"
+      print("Received: ", data.data)
+      print("TimeStamp: ", data.tm.sec, "[s] ", data.tm.nsec, "[ns]")
     time.sleep(0.001)
     return RTC.RTC_OK
 

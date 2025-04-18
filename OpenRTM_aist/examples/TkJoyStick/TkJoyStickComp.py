@@ -28,7 +28,7 @@ tkjoystick_spec = ["implementation_id", "TkJoyStick",
                    ""]
 # </rtc-template>
 
-import tkjoystick
+from . import tkjoystick
 
 class Position:
   def __init__(self, x = 0.0, y = 0.0, r = 0.0, th = 0.0):
@@ -83,7 +83,7 @@ class TkJoyStick(OpenRTM_aist.DataFlowComponentBase):
     _v = self._k * math.hypot(x, y)
     _vl = _v * math.cos(_th - (math.pi/4.0))
     _vr = _v * math.sin(_th - (math.pi/4.0))
-    print x, y, _vl, _vr
+    print(x, y, _vl, _vr)
     return [_vl, _vr]
 
   def set_pos(self, pos, pol):

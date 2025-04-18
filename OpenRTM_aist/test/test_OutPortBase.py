@@ -34,7 +34,7 @@ class PublisherTest:
     counter+=1
 
   def update(self):
-    print "update",self.counter
+    print("update",self.counter)
     
 class ConnectorMock:
   def __init__(self, name="name", id="id", ports=None, properties=None):

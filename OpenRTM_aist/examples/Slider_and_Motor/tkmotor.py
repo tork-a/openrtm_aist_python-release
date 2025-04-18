@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 # -*- Python -*-
 
-from Tkinter import *
-import thread
+from tkinter import *
+import _thread
 import time
 import math
 
@@ -37,7 +37,7 @@ class TkMotor(Frame):
 		self.sx2 = []
 		self.sy2 = []
 		
-		for i in xrange(self.num):
+		for i in range(self.num):
 			self.x.append(self.r * self.space / 2 * (i+0.5) * 2)
 			self.y.append(self.r * self.space / 2)
 			self.x1.append(self.x[i] - self.r)
@@ -79,8 +79,8 @@ class TkMotor(Frame):
 def test ():
 	m = TkMotor(6, 40, Toplevel())
 	n = TkMotor(6, 40, Toplevel())
-	thread.start_new_thread(m.mainloop, ())
-	thread.start_new_thread(n.mainloop, ())
+	_thread.start_new_thread(m.mainloop, ())
+	_thread.start_new_thread(n.mainloop, ())
 	cnt = 0
 	while(1):
 		angle = [cnt % 360, - cnt % 360, cnt % 360, - cnt % 360, cnt % 360, - cnt % 360]

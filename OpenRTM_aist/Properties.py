@@ -199,13 +199,13 @@ class Properties:
     if defaults_map:
       #for i in range(len(defaults_map.items())):
       #  self.setDefault(defaults_map.keys()[i], defaults_map.values()[i])
-      for key, value in defaults_map.items():
+      for key, value in list(defaults_map.items()):
         self.setDefault(key, value)
       return
 
     if defaults_str:
       if num is None:
-        _num = sys.maxint
+        _num = sys.maxsize
       else:
         _num = num
       self.setDefaults(defaults_str, _num)
@@ -535,7 +535,7 @@ class Properties:
   # @endif
   def setDefaults(self, defaults, num = None):
     if num is None:
-      num = sys.maxint
+      num = sys.maxsize
 
     i = 0
     len_ = len(defaults)

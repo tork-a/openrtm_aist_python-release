@@ -10,7 +10,7 @@ import OpenRTM_aist
 import RTC
 
 
-from CorbaNaming import *
+from .CorbaNaming import *
 import SDOPackage
 
 # class RtmEnv :
@@ -92,21 +92,21 @@ class NameSpace :
         if bd.binding_type == CosNaming.nobject :
             tmp = name_context.resolve(bd.binding_name)
             self.obj_list[nam]=tmp
-            print 'objcet '+nam+' was listed.'
+            print('objcet '+nam+' was listed.')
             try :
                 tmp = tmp._narrow(RTC.RTObject)
             except :
-                print nam+' is not RTC.'
+                print(nam+' is not RTC.')
                 tmp = None
             try :
                 if tmp :
                    rslt = [[nam, tmp]]
                    self.rtc_handles[nam]=RtcHandle(nam,self,tmp)
-                   print 'handle for '+nam+' was created.'
+                   print('handle for '+nam+' was created.')
                 else :
                    pass
             except :
-                print nam+' is not alive.'
+                print(nam+' is not alive.')
                 pass
         else :
             tmp = name_context.resolve(bd.binding_name)
@@ -124,7 +124,7 @@ def nvlist2dict(nvlist) :
     return rslt
 def dict2nvlist(dict) :
     rslt = []
-    for tmp in dict.keys() :
+    for tmp in list(dict.keys()) :
         rslt.append(SDOPackage.NameValue(tmp, any.to_any(dict[tmp])))
     return rslt
 #
@@ -284,7 +284,7 @@ class RtcOutport(Port) :
         if self.ref :
            return self.ref.get().value()
         else :
-           print "not supported"
+           print("not supported")
            return None
 #
 # RtcHandle
