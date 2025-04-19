@@ -1,7 +1,7 @@
-From aa16b156a11f96ab0c567dffe3b11f4b8881a774 Mon Sep 17 00:00:00 2001
+From 74477d6278325bef49f0c071210fd817adfb73eb Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Fri, 29 Sep 2023 17:07:29 +0900
-Subject: [PATCH 5/5] remove IntType, ListType
+Subject: [PATCH 5/6] remove IntType, ListType
 
 ---
  OpenRTM_aist/Manager.py | 6 +++---

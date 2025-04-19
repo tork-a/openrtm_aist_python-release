@@ -1,7 +1,7 @@
-From da9a58ae45feafde2a9abea66aae847921532526 Mon Sep 17 00:00:00 2001
+From 215e03d1e948284f7bbfb18471b194a5c8853a6e Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Fri, 18 Apr 2025 16:00:00 +0900
-Subject: [PATCH 4/5] revert 2to3 -f next and other minor changes for rtprint
+Subject: [PATCH 4/6] revert 2to3 -f next and other minor changes for rtprint
 
 ---
  OpenRTM_aist/NumberingPolicy.py        |  2 +-

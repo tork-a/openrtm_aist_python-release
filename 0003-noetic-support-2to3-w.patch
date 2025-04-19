@@ -1,7 +1,7 @@
-From e5ddaa06bd3c3fd37ff4c86f02015f75541a2e64 Mon Sep 17 00:00:00 2001
+From 52c870d6a51dfe8b05e0dfd23274abd3cdf54db2 Mon Sep 17 00:00:00 2001
 From: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
 Date: Fri, 18 Apr 2025 15:59:15 +0900
-Subject: [PATCH 3/5] noetic support: 2to3 -w .
+Subject: [PATCH 3/6] noetic support: 2to3 -w .
 
 ---
  OpenRTM_aist/ConfigAdmin.py                   |  24 +-
