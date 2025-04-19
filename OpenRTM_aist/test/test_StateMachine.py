@@ -56,39 +56,39 @@ class TestStateMachine(unittest.TestCase):
     return
 
   def nullAction(self, st):
-    print("nullAction.")
+    print "nullAction."
     return True
 
   def on_activated(self, st):
-    print("on_activated.")
+    print "on_activated."
     return True
 
   def on_deactivated(self, st):
-    print("on_deactivated.")
+    print "on_deactivated."
     return True
 
   def on_aborting(self, st):
-    print("on_aborting.")
+    print "on_aborting."
     return True
 
   def on_error(self, st):
-    print("on_error.")
+    print "on_error."
     return True
 
   def on_reset(self, st):
-    print("on_reset.")
+    print "on_reset."
     return True
 
   def on_execute(self, st):
-    print("on_execute.")
+    print "on_execute."
     return True
 
   def on_state_update(self, st):
-    print("on_state_update.")
+    print "on_state_update."
     return True
 
   def transition(self, st):
-    print("transition.")
+    print "transition."
     return True
 
 

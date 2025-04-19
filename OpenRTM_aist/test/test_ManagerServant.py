@@ -55,7 +55,7 @@ class TestComp(OpenRTM_aist.DataFlowComponentBase):
 
     
 def TestCompInit(manager):
-  print("TestCompInit")
+  print "TestCompInit"
   global com
   profile = OpenRTM_aist.Properties(defaults_str=configsample_spec)
   manager.registerFactory(profile,
@@ -65,9 +65,9 @@ def TestCompInit(manager):
 
 def TestEcInit(manager):
   profile = OpenRTM_aist.Properties(defaults_str=configsample_spec)
-  print(manager.registerECFactory("Art",
+  print manager.registerECFactory("Art",
           TestComp,
-          OpenRTM_aist.Delete))
+          OpenRTM_aist.Delete)
   manager.createComponent("TestEc")
 
 

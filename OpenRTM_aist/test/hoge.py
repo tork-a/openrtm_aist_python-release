@@ -18,7 +18,7 @@ class HOGE:
         pass
 
 def echo(*args):
-    print("hello HOGE")
+    print "hello HOGE"
 
         
 
