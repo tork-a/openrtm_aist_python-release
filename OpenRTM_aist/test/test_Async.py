@@ -30,9 +30,9 @@ class A:
 
 	def hoge(self):
 		for i in range(5):
-			print(",", end=' ')
+			print ",",
 			time.sleep(1)
-		print()
+		print
 		self._hoge = True
 		return
 
@@ -40,9 +40,9 @@ class A:
 		return self._hoge
 
 	def munya(self, msg):
-		print()
+		print
 		for i in range(5):
-			print(",", end=' ')
+			print ",",
 			time.sleep(1)
 		self._munya = True
 		return
@@ -52,7 +52,7 @@ class A:
 
 	def add_one(self, val):
 		for i in range(5):
-			print(",", end=' ')
+			print ",",
 			time.sleep(1)
 		self._addone = True
 		return val+1

@@ -54,47 +54,47 @@ class TestComp(OpenRTM_aist.DataFlowComponentBase):
 		OpenRTM_aist.DataFlowComponentBase.__init__(self, manager)
 
 	def onInitialize(self):
-		print("onInitialize")
+		print "onInitialize"
 		return RTC.RTC_OK
 
 	def onFinalize(self):
-		print("onFinalize")
+		print "onFinalize"
 		return RTC.RTC_OK
 		
 	def onStartup(self, ec_id):
-		print("onStartup")
+		print "onStartup"
 		return RTC.RTC_OK
 
 	def onShutdown(self, ec_id):
-		print("onSutdown")
+		print "onSutdown"
 		return RTC.RTC_OK
 
 	def onActivated(self, ec_id):
-		print("onActivated")
+		print "onActivated"
 		return RTC.RTC_OK
 
 	def onDeactivated(self, ec_id):
-		print("onDeactivated")
+		print "onDeactivated"
 		return RTC.RTC_OK
 
 	def onExecute(self, ec_id):
-		print("onExecute")
+		print "onExecute"
 		return RTC.RTC_OK
 
 	def onAborting(self, ec_id):
-		print("onAborting")
+		print "onAborting"
 		return RTC.RTC_OK
 
 	def onReset(self, ec_id):
-		print("onReset")
+		print "onReset"
 		return RTC.RTC_OK
 		
 	def onStateUpdate(self, ec_id):
-		print("onStateUpdate")
+		print "onStateUpdate"
 		return RTC.RTC_OK
 
 	def onRateChanged(self, ec_id):
-		print("onRateChanged")
+		print "onRateChanged"
 		return RTC.RTC_OK
 
 		

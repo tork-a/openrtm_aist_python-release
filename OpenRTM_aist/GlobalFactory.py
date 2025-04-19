@@ -36,7 +36,7 @@ class Factory:
 
   ## bool hasFactory(const Identifier& id)
   def hasFactory(self, id):
-    if id not in self._creators:
+    if not self._creators.has_key(id):
       return False
     return True
 
@@ -45,7 +45,7 @@ class Factory:
   def getIdentifiers(self):
     idlist = []
 
-    for id in list(self._creators.keys()):
+    for id in self._creators.keys():
       idlist.append(id)
     idlist.sort()
     return idlist
@@ -58,7 +58,7 @@ class Factory:
     if not creator:
       return self.INVALID_ARG
 
-    if id in self._creators:
+    if self._creators.has_key(id):
       return self.ALREADY_EXISTS
     
     self._creators[id] = creator
@@ -67,7 +67,7 @@ class Factory:
 
   ## ReturnCode removeFactory(const Identifier& id)
   def removeFactory(self, id):
-    if id not in self._creators:
+    if not self._creators.has_key(id):
       return self.NOT_FOUND
 
     del self._creators[id]
@@ -76,8 +76,8 @@ class Factory:
 
   ## AbstractClass* createObject(const Identifier& id)
   def createObject(self, id):
-    if id not in self._creators:
-      print("Factory.createObject return None id: ", id)
+    if not self._creators.has_key(id):
+      print "Factory.createObject return None id: ", id
       return None
     return self._creators[id]()
 
@@ -85,7 +85,7 @@ class Factory:
   ## void deleteObject(const Identifier& id, AbstractClass*& obj)
   def deleteObject(self, obj, id=None):
     if id:
-      if id not in self._creators:
+      if not self._creators.has_key(id):
         return
 
     del obj

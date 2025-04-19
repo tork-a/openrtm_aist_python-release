@@ -248,20 +248,20 @@ class ModuleManager:
 
     self._rtcout.RTC_TRACE("load(fname = %s)", file_name)
     if file_name == "":
-      raise ModuleManager.InvalidArguments("Invalid file name.")
+      raise ModuleManager.InvalidArguments, "Invalid file name."
 
     if OpenRTM_aist.isURL(file_name):
       if not self._downloadAllowed:
-        raise ModuleManager.NotAllowedOperation("Downloading module is not allowed.")
+        raise ModuleManager.NotAllowedOperation, "Downloading module is not allowed."
       else:
-        raise ModuleManager.NotFound("Not implemented.")
+        raise ModuleManager.NotFound, "Not implemented."
 
     import_name = os.path.split(file_name)[-1]
     pathChanged=False
     file_path = None
     if OpenRTM_aist.isAbsolutePath(file_name):
       if not self._absoluteAllowed:
-        raise ModuleManager.NotAllowedOperation("Absolute path is not allowed")
+        raise ModuleManager.NotAllowedOperation, "Absolute path is not allowed"
       else:
         splitted_name = os.path.split(file_name)
         save_path = sys.path[:]
@@ -273,10 +273,10 @@ class ModuleManager:
     else:
       file_path = self.findFile(file_name, self._loadPath)
       if not file_path:
-        raise ModuleManager.InvalidArguments("Invalid file name.")
+        raise ModuleManager.InvalidArguments, "Invalid file name."
 
     if not self.fileExist(file_path):
-      raise ModuleManager.FileNotFound(file_name)
+      raise ModuleManager.FileNotFound, file_name
 
     if not pathChanged:
       splitted_name = os.path.split(file_path)
@@ -318,7 +318,7 @@ class ModuleManager:
   def unload(self, file_name):
     dll = self._modules.find(file_name)
     if not dll:
-      raise ModuleManager.NotFound(file_name)
+      raise ModuleManager.NotFound, file_name
 
     self._modules.unregisterObject(file_name)
     return
@@ -360,12 +360,12 @@ class ModuleManager:
   def symbol(self, file_name, func_name):
     dll = self._modules.find(file_name)
     if not dll:
-      raise ModuleManager.ModuleNotFound(file_name)
+      raise ModuleManager.ModuleNotFound, file_name
 
     func = getattr(dll.dll,func_name,None)
 
     if not func:
-      raise ModuleManager.SymbolNotFound(func_name)
+      raise ModuleManager.SymbolNotFound, func_name
     
     return func
 

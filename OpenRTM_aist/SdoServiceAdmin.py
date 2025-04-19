@@ -216,7 +216,7 @@ class SdoServiceAdmin:
   # Virtual destractor.
   # @endif
   def __del__(self):
-    len_ = len(self._providers)
+    len_ = len(self._proiders)
     for i in range(len_):
       idx = (len_ - 1) - i
       self._providers[idx].finalize()

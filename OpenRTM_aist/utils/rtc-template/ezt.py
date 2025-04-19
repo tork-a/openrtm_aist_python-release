@@ -192,7 +192,7 @@ _re_args = re.compile(r'"(?:[^\\"]|\\.)*"|[-\w.]+')
 
 # block commands and their argument counts
 _block_cmd_specs = { 'if-index':2, 'for':1, 'is':2 }
-_block_cmds = list(_block_cmd_specs.keys())
+_block_cmds = _block_cmd_specs.keys()
 
 # two regular expresssions for compressing whitespace. the first is used to
 # compress any whitespace including a newline into a single newline. the
@@ -365,8 +365,7 @@ class Template:
     else:
       fp.write(value)
 
-  def _cmd_format(self, xxx_todo_changeme, fp, ctx):
-    (valref, args) = xxx_todo_changeme
+  def _cmd_format(self, (valref, args), fp, ctx):
     fmt = _get_value(valref, ctx)
     parts = _re_subst.split(fmt)
     for i in range(len(parts)):
@@ -379,8 +378,7 @@ class Template:
           piece = '<undef>'
       fp.write(piece)
 
-  def _cmd_include(self, xxx_todo_changeme1, fp, ctx):
-    (valref, reader) = xxx_todo_changeme1
+  def _cmd_include(self, (valref, reader), fp, ctx):
     fname = _get_value(valref, ctx)
     ### note: we don't have the set of for_names to pass into this parse.
     ### I don't think there is anything to do but document it.
@@ -481,7 +479,7 @@ def _prepare_ref(refname, for_names, file_args):
       break
   return refname, start, rest
 
-def _get_value(xxx_todo_changeme2, ctx):
+def _get_value((refname, start, rest), ctx):
   """(refname, start, rest) -> a prepared `value reference' (see above).
   ctx -> an execution context instance.
 
@@ -489,14 +487,13 @@ def _get_value(xxx_todo_changeme2, ctx):
   for blocks take precedence over data dictionary members with the 
   same name.
   """
-  (refname, start, rest) = xxx_todo_changeme2
   if rest is None:
     # it was a string constant
     return start
-  if start in ctx.for_index:
+  if ctx.for_index.has_key(start):
     list, idx = ctx.for_index[start]
     ob = list[idx]
-  elif start in ctx.data:
+  elif ctx.data.has_key(start):
     ob = ctx.data[start]
   else:
     raise UnknownReference(refname)
